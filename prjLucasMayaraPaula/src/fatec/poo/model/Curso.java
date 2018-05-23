@@ -36,6 +36,7 @@ public class Curso {
     }
     
     public void addTurma(Turma t) {
-        
+        turmas.add(t);
+        t.setCurso(this);
     }
 }

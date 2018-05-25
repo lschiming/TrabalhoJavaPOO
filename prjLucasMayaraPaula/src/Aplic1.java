@@ -1,23 +1,10 @@
-
 import fatec.poo.model.Aluno;
 import fatec.poo.model.Curso;
 import fatec.poo.model.Instrutor;
 import fatec.poo.model.Matricula;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Asus
- */
 public class Aplic1 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
         //INSTRUTOR
@@ -39,6 +26,14 @@ public class Aplic1 {
         instrutor01.setEmail("marcelo_neves10@global.com");
         
 
+        //MATRICULA
+        Matricula matricula01 = new Matricula("17/05/2018");
+        matricula01.setNota(5);
+        matricula01.setQtdeFaltas(10);
+        
+        Matricula matricula02 = new Matricula("10/01/2018"); 
+        matricula02.setNota(10);
+        matricula02.setQtdeFaltas(4);
         
         //ALUNOS
         Aluno aluno01 = new Aluno("Fernanda Melo", "32747187569");
@@ -56,6 +51,7 @@ public class Aplic1 {
         aluno01.setEstadoCivil("Solteira");
         aluno01.setRg("7897540514");
         aluno01.setEmail("fernanda.mel@gmail.com");
+        aluno01.setMatricula(matricula01); 
         
         
         Aluno aluno02 = new Aluno("Tereza Batista", "45010125399");
@@ -72,19 +68,9 @@ public class Aplic1 {
         aluno02.setSexo("Feminino");
         aluno02.setEstadoCivil("Casada");
         aluno02.setRg("7897548752");
-        aluno02.setEmail("tereza.batista@outlook.com");        
+        aluno02.setEmail("tereza.batista@outlook.com");   
+        aluno02.setMatricula(matricula02);      
         
-        
-        //MATRICULA
-        Matricula matricula01 = new Matricula("17/05/2018");
-        matricula01.setAluno(aluno01);
-        matricula01.setNota(5);
-        matricula01.setQtdeFaltas(10);
-        
-        Matricula matricula02 = new Matricula("10/01/2018");
-        matricula02.setAluno(aluno02); 
-        matricula02.setNota(10);
-        matricula02.setQtdeFaltas(4);
         
 
         //TURMA

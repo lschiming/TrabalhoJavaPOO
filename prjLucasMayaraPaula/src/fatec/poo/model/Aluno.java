@@ -1,9 +1,5 @@
 package fatec.poo.model;
 
-/**
- *
- * @author Asus
- */
 public class Aluno extends Pessoa {
 
     private String escolaridade;

@@ -1,9 +1,6 @@
 package fatec.poo.model;
 
-/**
- *
- * @author Paula Sartori
- */
+
 public class AVista {
     private double valor;
     private int agencia, nCheque;

@@ -1,9 +1,5 @@
 package fatec.poo.model;
 
-/**
- *
- * @author Mayara
- */
 public abstract class Pessoa {
 
     String dataNasc;

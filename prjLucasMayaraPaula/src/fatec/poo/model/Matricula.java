@@ -1,9 +1,5 @@
 package fatec.poo.model;
 
-/**
- *
- * @author Paula Sartori
- */
 public class Matricula {
     private String data;
     private int qtdeFaltas;

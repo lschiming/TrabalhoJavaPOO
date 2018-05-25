@@ -20,7 +20,7 @@ public class Instrutor extends Pessoa {
         this.areaAtuacao = areaAtuacao;
     }
 
-    public void addTurmas(Turma t) {
+    public void addTurma(Turma t) {
         turmas.add(t);
         t.setInstrutor(this);
     }

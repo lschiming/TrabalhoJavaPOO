@@ -2,6 +2,7 @@ import fatec.poo.model.Aluno;
 import fatec.poo.model.Curso;
 import fatec.poo.model.Instrutor;
 import fatec.poo.model.Matricula;
+import fatec.poo.model.Turma;
 
 public class Aplic1 {
 
@@ -74,9 +75,8 @@ public class Aplic1 {
         
 
         //TURMA
-        
-       
-        
+        Turma turma01 = new Turma("AUT-N1801","Aut. Ind. Noturno 01/2018");
+        Turma turma02 = new Turma("AUT-N1801","Aut. Ind. Noturno 01/2018");
         
         //CURSO
         Curso curso01 = new Curso("AUT", "Automação Industrial");
@@ -95,15 +95,14 @@ public class Aplic1 {
         
         
         curso01.addTurma(turma01);
-        instrutor01.addTurmas(turma01);
-        turma01.addMatriculas(matricula01);
+        instrutor01.addTurma(turma01);
+        turma01.addMatricula(matricula01);
         
         curso02.addTurma(turma02);
-        instrutor01.addTurmas(turma02);
-        turma02.addMatriculas(matricula02);
+        instrutor01.addTurma(turma02);
+        turma02.addMatricula(matricula02);
 
-        curso01.listar();
-        
+//        curso01.listar();        
         
     }
     

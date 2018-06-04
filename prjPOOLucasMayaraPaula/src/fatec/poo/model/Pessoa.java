@@ -2,12 +2,8 @@ package fatec.poo.model;
 
 public abstract class Pessoa {
 
-    String dataNasc;
-    String endereco;
-
-private String bairro, cidade, nome,
-               estado, cep, telefone, celular, sexo, estadoCivil, rg, cpf, email;
-
+    private String nome, dataNasc, endereco, bairro, cidade,  estado, cep,
+                   telefone, celular, sexo, estadoCivil, rg, cpf, email;
     private int numero;
 
     public Pessoa(String nome, String cpf) {
@@ -39,7 +35,7 @@ private String bairro, cidade, nome,
         this.estado = estado;
     }
 
-    public void setCep(String cep) {
+    public void setCEP(String cep) {
         this.cep = cep;
     }
 
@@ -59,11 +55,11 @@ private String bairro, cidade, nome,
         this.estadoCivil = estadoCivil;
     }
 
-    public void setRg(String rg) {
+    public void setRG(String rg) {
         this.rg = rg;
     }
 
-    public void setCpf(String cpf) {
+    public void setCPF(String cpf) {
         this.cpf = cpf;
     }
 

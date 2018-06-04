@@ -13,14 +13,9 @@ public class Aluno extends Pessoa {
         this.escolaridade = escolaridade;
     }
 
-    public Matricula getMatricula() {
-        return matricula;
-    }
-
     public void setMatricula(Matricula matricula) {
         this.matricula = matricula;
+        matricula.setAluno(this);
     }
-
-
 
 }

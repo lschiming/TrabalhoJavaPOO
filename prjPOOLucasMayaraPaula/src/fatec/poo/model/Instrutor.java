@@ -9,7 +9,7 @@ public class Instrutor extends Pessoa {
 
     public Instrutor(String nome, String cpf) {
         super(cpf, nome);
-        turmas = new ArrayList<Turma>();
+        turmas = new ArrayList<>();
     }
 
     public void setFormacao(String formacao) {
@@ -25,5 +25,4 @@ public class Instrutor extends Pessoa {
         t.setInstrutor(this);
     }
     
-
 }

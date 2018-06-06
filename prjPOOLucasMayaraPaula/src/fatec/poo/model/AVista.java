@@ -2,7 +2,6 @@ package fatec.poo.model;
 
 
 public class AVista {
-    
     private double valor;
     private int agencia, nCheque;
     private String preData;
@@ -22,5 +21,6 @@ public class AVista {
     public void setPreData(String preData) {
         this.preData = preData;
     }
+    
     
 }

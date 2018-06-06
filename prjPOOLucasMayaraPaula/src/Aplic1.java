@@ -18,12 +18,12 @@ public class Aplic1 {
         instrutor01.setBairro("Centro");
         instrutor01.setCidade("Sorocaba");
         instrutor01.setEstado("São Paulo");
-        instrutor01.setCEP("15078-060");
+        instrutor01.setCep("15078-060");
         instrutor01.setTelefone("3223-9999");
         instrutor01.setCelular("99758-6379");
         instrutor01.setSexo("Masculino");
         instrutor01.setEstadoCivil("Casado");
-        instrutor01.setRG("789753663");
+        instrutor01.setRg("789753663");
         instrutor01.setEmail("marcelo_neves10@global.com");
         
 
@@ -45,12 +45,12 @@ public class Aplic1 {
         aluno01.setBairro("Parque Esmeralda");
         aluno01.setCidade("Sorocaba");
         aluno01.setEstado("São Paulo");
-        aluno01.setCEP("15111-060");
+        aluno01.setCep("15111-060");
         aluno01.setTelefone("3223-9352");
         aluno01.setCelular("98758-5079");
         aluno01.setSexo("Feminino");
         aluno01.setEstadoCivil("Solteira");
-        aluno01.setRG("7897540514");
+        aluno01.setRg("7897540514");
         aluno01.setEmail("fernanda.mel@gmail.com");
         aluno01.setMatricula(matricula01); 
         
@@ -63,12 +63,12 @@ public class Aplic1 {
         aluno02.setBairro("Parque Manchester");
         aluno02.setCidade("Sorocaba");
         aluno02.setEstado("São Paulo");
-        aluno02.setCEP("15987-050");
+        aluno02.setCep("15987-050");
         aluno02.setTelefone("3333-9340");
         aluno02.setCelular("98888-5079");
         aluno02.setSexo("Feminino");
         aluno02.setEstadoCivil("Casada");
-        aluno02.setRG("7897548752");
+        aluno02.setRg("7897548752");
         aluno02.setEmail("tereza.batista@outlook.com");   
         aluno02.setMatricula(matricula02);      
         
@@ -96,11 +96,13 @@ public class Aplic1 {
         
         curso01.addTurma(turma01);
         instrutor01.addTurma(turma01);
+        turma01.addMatricula(matricula01);
         
         curso02.addTurma(turma02);
         instrutor01.addTurma(turma02);
+        turma02.addMatricula(matricula02);
 
-//        curso01.listar();
+//        curso01.listar();        
         
     }
     

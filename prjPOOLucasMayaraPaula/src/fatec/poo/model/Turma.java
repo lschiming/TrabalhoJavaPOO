@@ -43,6 +43,10 @@ public class Turma {
         this.curso = curso;
     }
 
+    public void setSiglaTurma(String siglaTurma) {
+        this.siglaTurma = siglaTurma;
+    }
+
     public void setInstrutor(Instrutor instrutor) {
         this.instrutor = instrutor;
     }

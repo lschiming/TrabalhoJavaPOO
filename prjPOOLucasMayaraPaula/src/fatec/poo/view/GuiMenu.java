@@ -27,7 +27,87 @@ public class GuiMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mnuCadastros = new javax.swing.JMenu();
+        mniCurso = new javax.swing.JMenuItem();
+        mniTurma = new javax.swing.JMenuItem();
+        mniInstrutor = new javax.swing.JMenuItem();
+        mniAluno = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mniSair = new javax.swing.JMenuItem();
+        mnuOperacoes = new javax.swing.JMenu();
+        mniAlocarInst = new javax.swing.JMenuItem();
+        mniEfetuarMat = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Trabalho POO");
+
+        mnuCadastros.setText("Cadastros");
+
+        mniCurso.setText("Curso");
+        mniCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniCursoActionPerformed(evt);
+            }
+        });
+        mnuCadastros.add(mniCurso);
+
+        mniTurma.setText("Turma");
+        mniTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniTurmaActionPerformed(evt);
+            }
+        });
+        mnuCadastros.add(mniTurma);
+
+        mniInstrutor.setText("Instrutor");
+        mniInstrutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniInstrutorActionPerformed(evt);
+            }
+        });
+        mnuCadastros.add(mniInstrutor);
+
+        mniAluno.setText("Aluno");
+        mniAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAlunoActionPerformed(evt);
+            }
+        });
+        mnuCadastros.add(mniAluno);
+        mnuCadastros.add(jSeparator1);
+
+        mniSair.setText("Sair");
+        mniSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniSairActionPerformed(evt);
+            }
+        });
+        mnuCadastros.add(mniSair);
+
+        jMenuBar1.add(mnuCadastros);
+
+        mnuOperacoes.setText("Operações");
+
+        mniAlocarInst.setText("Alocar Instrutor");
+        mniAlocarInst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAlocarInstActionPerformed(evt);
+            }
+        });
+        mnuOperacoes.add(mniAlocarInst);
+
+        mniEfetuarMat.setText("Efetuar Matrícula");
+        mniEfetuarMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEfetuarMatActionPerformed(evt);
+            }
+        });
+        mnuOperacoes.add(mniEfetuarMat);
+
+        jMenuBar1.add(mnuOperacoes);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,11 +117,39 @@ public class GuiMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mniCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCursoActionPerformed
+        new GuiCurso().setVisible(true);
+    }//GEN-LAST:event_mniCursoActionPerformed
+
+    private void mniTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTurmaActionPerformed
+        new GuiTurma().setVisible(true);
+    }//GEN-LAST:event_mniTurmaActionPerformed
+
+    private void mniInstrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniInstrutorActionPerformed
+        new GuiInstrutor().setVisible(true);
+    }//GEN-LAST:event_mniInstrutorActionPerformed
+
+    private void mniAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAlunoActionPerformed
+        new GuiAluno().setVisible(true);
+    }//GEN-LAST:event_mniAlunoActionPerformed
+
+    private void mniSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_mniSairActionPerformed
+
+    private void mniAlocarInstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAlocarInstActionPerformed
+        new GuiAlocarInstrutor().setVisible(true);
+    }//GEN-LAST:event_mniAlocarInstActionPerformed
+
+    private void mniEfetuarMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEfetuarMatActionPerformed
+        new GuiEfetuarMatricula().setVisible(true);
+    }//GEN-LAST:event_mniEfetuarMatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +187,16 @@ public class GuiMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenuItem mniAlocarInst;
+    private javax.swing.JMenuItem mniAluno;
+    private javax.swing.JMenuItem mniCurso;
+    private javax.swing.JMenuItem mniEfetuarMat;
+    private javax.swing.JMenuItem mniInstrutor;
+    private javax.swing.JMenuItem mniSair;
+    private javax.swing.JMenuItem mniTurma;
+    private javax.swing.JMenu mnuCadastros;
+    private javax.swing.JMenu mnuOperacoes;
     // End of variables declaration//GEN-END:variables
 }

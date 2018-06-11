@@ -27,14 +27,14 @@ public class GuiAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelCPF = new javax.swing.JLabel();
-        labelNome = new javax.swing.JLabel();
-        labelSexo = new javax.swing.JLabel();
-        labelEnd = new javax.swing.JLabel();
-        labelBairro = new javax.swing.JLabel();
-        labelMun = new javax.swing.JLabel();
-        labelRG = new javax.swing.JLabel();
-        labelEmail = new javax.swing.JLabel();
+        lblCPF = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        lblSexo = new javax.swing.JLabel();
+        lblEnd = new javax.swing.JLabel();
+        lblBairro = new javax.swing.JLabel();
+        lblMun = new javax.swing.JLabel();
+        lblRG = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         ftxtCPF = new javax.swing.JFormattedTextField();
         txtNome = new javax.swing.JTextField();
         cbxSexo = new javax.swing.JComboBox<>();
@@ -43,19 +43,19 @@ public class GuiAluno extends javax.swing.JFrame {
         txtMun = new javax.swing.JTextField();
         ftxtRG = new javax.swing.JFormattedTextField();
         txtEmail = new javax.swing.JTextField();
-        labelEstCiv = new javax.swing.JLabel();
+        lblEstCiv = new javax.swing.JLabel();
         cbxEstCivil = new javax.swing.JComboBox<>();
-        labelEstado = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
         cbxEstado = new javax.swing.JComboBox<>();
-        labelDtNasc = new javax.swing.JLabel();
-        labelEscolaridade = new javax.swing.JLabel();
-        labelNumero = new javax.swing.JLabel();
-        labelCEP = new javax.swing.JLabel();
-        labelTel = new javax.swing.JLabel();
-        labelCel = new javax.swing.JLabel();
+        lblDtNasc = new javax.swing.JLabel();
+        lblEscolaridade = new javax.swing.JLabel();
+        lblNum = new javax.swing.JLabel();
+        lblCEP = new javax.swing.JLabel();
+        lblTelRes = new javax.swing.JLabel();
+        lblCelular = new javax.swing.JLabel();
         ftxtDtNasc = new javax.swing.JFormattedTextField();
-        cbxEsc = new javax.swing.JComboBox<>();
-        txtN = new javax.swing.JTextField();
+        cbxEscolaridade = new javax.swing.JComboBox<>();
+        txtNum = new javax.swing.JTextField();
         ftxtCEP = new javax.swing.JFormattedTextField();
         ftxtTelefone = new javax.swing.JFormattedTextField();
         ftxtCelular = new javax.swing.JFormattedTextField();
@@ -65,24 +65,24 @@ public class GuiAluno extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Aluno");
 
-        labelCPF.setText("CPF");
+        lblCPF.setText("CPF");
 
-        labelNome.setText("Nome");
+        lblNome.setText("Nome");
 
-        labelSexo.setText("Sexo");
+        lblSexo.setText("Sexo");
 
-        labelEnd.setText("Endereço");
+        lblEnd.setText("Endereço");
 
-        labelBairro.setText("Bairro");
+        lblBairro.setText("Bairro");
 
-        labelMun.setText("Municipio");
+        lblMun.setText("Municipio");
 
-        labelRG.setText("RG");
+        lblRG.setText("RG");
 
-        labelEmail.setText("Email");
+        lblEmail.setText("Email");
 
         try {
             ftxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -111,35 +111,35 @@ public class GuiAluno extends javax.swing.JFrame {
 
         txtEmail.setEnabled(false);
 
-        labelEstCiv.setText("Estado Civil");
+        lblEstCiv.setText("Estado Civil");
 
         cbxEstCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteira", "Casada", "União Estável", "Viuva", "Divorciada", "Outro" }));
         cbxEstCivil.setEnabled(false);
 
-        labelEstado.setText("Estado");
+        lblEstado.setText("Estado");
 
         cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbxEstado.setEnabled(false);
 
-        labelDtNasc.setText("Data de Nascimento");
+        lblDtNasc.setText("Data de Nascimento");
 
-        labelEscolaridade.setText("Escolaridade");
+        lblEscolaridade.setText("Escolaridade");
 
-        labelNumero.setText("N°");
+        lblNum.setText("N°");
 
-        labelCEP.setText("CEP");
+        lblCEP.setText("CEP");
 
-        labelTel.setText("Tel.Residencial");
+        lblTelRes.setText("Tel.Residencial");
 
-        labelCel.setText("Celular");
+        lblCelular.setText("Celular");
 
         ftxtDtNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         ftxtDtNasc.setEnabled(false);
 
-        cbxEsc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbxEsc.setEnabled(false);
+        cbxEscolaridade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxEscolaridade.setEnabled(false);
 
-        txtN.setEnabled(false);
+        txtNum.setEnabled(false);
 
         try {
             ftxtCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -190,137 +190,125 @@ public class GuiAluno extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelEnd, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelBairro, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelMun, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelRG, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelCPF, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelNome, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelSexo, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblBairro)
+                            .addComponent(lblEnd)
+                            .addComponent(lblMun)
+                            .addComponent(lblRG)
+                            .addComponent(lblEmail)
+                            .addComponent(lblSexo)
+                            .addComponent(lblNome)
+                            .addComponent(lblCPF))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEmail)
-                            .addComponent(txtNome)
-                            .addComponent(txtEnd)
-                            .addComponent(txtBairro)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ftxtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(txtMun))
+                                .addComponent(txtMun, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelEstado)
+                                .addComponent(lblEstado)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelEstCiv)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbxEstCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelEscolaridade, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(labelCEP, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(labelTel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(labelCel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(labelDtNasc, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(3, 3, 3)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cbxEsc, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(labelNumero)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(ftxtDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(ftxtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(ftxtTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                            .addComponent(ftxtCelular, javax.swing.GroupLayout.Alignment.LEADING)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(btnExcluir)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(btnConsultar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblEstCiv)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbxEstCivil, 0, 1, Short.MAX_VALUE))
+                            .addComponent(txtEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ftxtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnInserir)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAlterar)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDtNasc)
+                            .addComponent(lblEscolaridade)
+                            .addComponent(lblNum)
+                            .addComponent(lblCEP)
+                            .addComponent(lblTelRes)
+                            .addComponent(lblCelular))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ftxtDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxEscolaridade, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ftxtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ftxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ftxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelCPF)
-                    .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCPF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNome)
+                    .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDtNasc)
+                    .addComponent(lblDtNasc)
                     .addComponent(ftxtDtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelSexo)
+                    .addComponent(lblSexo)
                     .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEstCiv)
+                    .addComponent(lblEstCiv)
                     .addComponent(cbxEstCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEscolaridade)
-                    .addComponent(cbxEsc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEscolaridade)
+                    .addComponent(cbxEscolaridade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelEnd)
+                    .addComponent(lblEnd)
                     .addComponent(txtEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelNumero)
-                    .addComponent(txtN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNum)
+                    .addComponent(txtNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelBairro)
+                    .addComponent(lblBairro)
                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCEP)
+                    .addComponent(lblCEP)
                     .addComponent(ftxtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMun)
+                    .addComponent(lblMun)
                     .addComponent(txtMun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEstado)
+                    .addComponent(lblEstado)
                     .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTel)
+                    .addComponent(lblTelRes)
                     .addComponent(ftxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelRG)
+                    .addComponent(lblRG)
                     .addComponent(ftxtRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCel)
+                    .addComponent(lblCelular)
                     .addComponent(ftxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelEmail)
+                    .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsultar)
                     .addComponent(btnInserir)
                     .addComponent(btnAlterar)
                     .addComponent(btnExcluir)
                     .addComponent(btnSair))
-                .addGap(21, 21, 21))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -371,7 +359,7 @@ public class GuiAluno extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnInserir;
     private javax.swing.JButton btnSair;
-    private javax.swing.JComboBox<String> cbxEsc;
+    private javax.swing.JComboBox<String> cbxEscolaridade;
     private javax.swing.JComboBox<String> cbxEstCivil;
     private javax.swing.JComboBox<String> cbxEstado;
     private javax.swing.JComboBox<String> cbxSexo;
@@ -381,27 +369,27 @@ public class GuiAluno extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtDtNasc;
     private javax.swing.JFormattedTextField ftxtRG;
     private javax.swing.JFormattedTextField ftxtTelefone;
-    private javax.swing.JLabel labelBairro;
-    private javax.swing.JLabel labelCEP;
-    private javax.swing.JLabel labelCPF;
-    private javax.swing.JLabel labelCel;
-    private javax.swing.JLabel labelDtNasc;
-    private javax.swing.JLabel labelEmail;
-    private javax.swing.JLabel labelEnd;
-    private javax.swing.JLabel labelEscolaridade;
-    private javax.swing.JLabel labelEstCiv;
-    private javax.swing.JLabel labelEstado;
-    private javax.swing.JLabel labelMun;
-    private javax.swing.JLabel labelNome;
-    private javax.swing.JLabel labelNumero;
-    private javax.swing.JLabel labelRG;
-    private javax.swing.JLabel labelSexo;
-    private javax.swing.JLabel labelTel;
+    private javax.swing.JLabel lblBairro;
+    private javax.swing.JLabel lblCEP;
+    private javax.swing.JLabel lblCPF;
+    private javax.swing.JLabel lblCelular;
+    private javax.swing.JLabel lblDtNasc;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEnd;
+    private javax.swing.JLabel lblEscolaridade;
+    private javax.swing.JLabel lblEstCiv;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblMun;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblNum;
+    private javax.swing.JLabel lblRG;
+    private javax.swing.JLabel lblSexo;
+    private javax.swing.JLabel lblTelRes;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEnd;
     private javax.swing.JTextField txtMun;
-    private javax.swing.JTextField txtN;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNum;
     // End of variables declaration//GEN-END:variables
 }

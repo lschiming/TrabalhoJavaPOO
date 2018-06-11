@@ -66,6 +66,7 @@ public class GuiAluno extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Aluno");
 
         labelCPF.setText("CPF");
 
@@ -136,6 +137,7 @@ public class GuiAluno extends javax.swing.JFrame {
         ftxtDtNasc.setEnabled(false);
 
         cbxEsc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxEsc.setEnabled(false);
 
         txtN.setEnabled(false);
 
@@ -231,7 +233,6 @@ public class GuiAluno extends javax.swing.JFrame {
                                     .addComponent(labelTel, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(labelCel, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(labelDtNasc, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(3, 3, 3)

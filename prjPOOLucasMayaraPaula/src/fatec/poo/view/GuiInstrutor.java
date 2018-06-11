@@ -30,8 +30,8 @@ public class GuiInstrutor extends javax.swing.JFrame {
         labelCPF = new javax.swing.JLabel();
         labelNome = new javax.swing.JLabel();
         labelSexo = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        labelEndereco = new javax.swing.JLabel();
+        labelBairro = new javax.swing.JLabel();
         labelMunicipio = new javax.swing.JLabel();
         labelRG = new javax.swing.JLabel();
         labelFormacao = new javax.swing.JLabel();
@@ -63,7 +63,9 @@ public class GuiInstrutor extends javax.swing.JFrame {
         ftxtCEP = new javax.swing.JFormattedTextField();
         ftxtTelRes = new javax.swing.JFormattedTextField();
         ftxtCelular = new javax.swing.JFormattedTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtAreaAtuacao = new javax.swing.JTextField();
+        labelEstado = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Instrutor");
@@ -74,9 +76,9 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
         labelSexo.setText("Sexo");
 
-        jLabel4.setText("Endereço");
+        labelEndereco.setText("Endereço");
 
-        jLabel5.setText("Bairro");
+        labelBairro.setText("Bairro");
 
         labelMunicipio.setText("Municipio");
 
@@ -190,7 +192,11 @@ public class GuiInstrutor extends javax.swing.JFrame {
         }
         ftxtCelular.setEnabled(false);
 
-        jTextField2.setEnabled(false);
+        txtAreaAtuacao.setEnabled(false);
+
+        labelEstado.setText("Estado");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,8 +211,8 @@ public class GuiInstrutor extends javax.swing.JFrame {
                             .addComponent(labelFormacao)
                             .addComponent(labelRG)
                             .addComponent(labelMunicipio)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
+                            .addComponent(labelBairro)
+                            .addComponent(labelEndereco)
                             .addComponent(labelSexo)
                             .addComponent(labelNome)
                             .addComponent(labelCPF))
@@ -217,11 +223,15 @@ public class GuiInstrutor extends javax.swing.JFrame {
                             .addComponent(txtBairro)
                             .addComponent(txtEmail)
                             .addComponent(txtNome)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(ftxtRG, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                                .addComponent(txtFormacao, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtMunicipio, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ftxtRG, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                            .addComponent(txtFormacao)
+                            .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelEstado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelDtNascimento, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -246,7 +256,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
                     .addComponent(ftxtDataNascimento, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNumero, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
+                    .addComponent(txtAreaAtuacao)
                     .addComponent(ftxtCelular)
                     .addComponent(ftxtTelRes))
                 .addGap(31, 31, 31))
@@ -272,13 +282,13 @@ public class GuiInstrutor extends javax.swing.JFrame {
                     .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelN)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelCEP)
                     .addComponent(ftxtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -288,7 +298,9 @@ public class GuiInstrutor extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelTelRes)
-                        .addComponent(ftxtTelRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ftxtTelRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelEstado)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelRG)
@@ -300,7 +312,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
                     .addComponent(labelFormacao, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFormacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelAreaAt)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAreaAtuacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +327,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel4, jLabel5, labelCPF, labelEmail, labelFormacao, labelMunicipio, labelNome, labelRG, labelSexo});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {labelBairro, labelCPF, labelEmail, labelEndereco, labelFormacao, labelMunicipio, labelNome, labelRG, labelSexo});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -381,15 +393,16 @@ public class GuiInstrutor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtDataNascimento;
     private javax.swing.JFormattedTextField ftxtRG;
     private javax.swing.JFormattedTextField ftxtTelRes;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel labelAreaAt;
+    private javax.swing.JLabel labelBairro;
     private javax.swing.JLabel labelCEP;
     private javax.swing.JLabel labelCPF;
     private javax.swing.JLabel labelCelular;
     private javax.swing.JLabel labelDtNascimento;
     private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelEndereco;
+    private javax.swing.JLabel labelEstado;
     private javax.swing.JLabel labelEstadoCivil;
     private javax.swing.JLabel labelFormacao;
     private javax.swing.JLabel labelMunicipio;
@@ -398,6 +411,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
     private javax.swing.JLabel labelRG;
     private javax.swing.JLabel labelSexo;
     private javax.swing.JLabel labelTelRes;
+    private javax.swing.JTextField txtAreaAtuacao;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;

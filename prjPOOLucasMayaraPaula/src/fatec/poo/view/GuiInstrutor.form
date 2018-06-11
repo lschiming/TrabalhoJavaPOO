@@ -33,8 +33,8 @@
                           <Component id="labelFormacao" min="-2" max="-2" attributes="0"/>
                           <Component id="labelRG" min="-2" max="-2" attributes="0"/>
                           <Component id="labelMunicipio" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelBairro" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelEndereco" min="-2" max="-2" attributes="0"/>
                           <Component id="labelSexo" min="-2" max="-2" attributes="0"/>
                           <Component id="labelNome" min="-2" max="-2" attributes="0"/>
                           <Component id="labelCPF" min="-2" max="-2" attributes="0"/>
@@ -46,12 +46,16 @@
                           <Component id="txtBairro" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtNome" alignment="0" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="ftxtRG" alignment="0" pref="95" max="32767" attributes="0"/>
-                              <Component id="txtFormacao" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtMunicipio" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="ftxtRG" alignment="0" pref="216" max="32767" attributes="0"/>
+                          <Component id="txtFormacao" alignment="0" max="32767" attributes="0"/>
                           <Component id="ftxtCPF" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txtMunicipio" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="labelEstado" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jComboBox1" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -81,7 +85,7 @@
                   <Component id="ftxtDataNascimento" alignment="1" max="32767" attributes="0"/>
                   <Component id="txtNumero" alignment="1" max="32767" attributes="0"/>
                   <Component id="cbxEstadoCivil" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jTextField2" max="32767" attributes="0"/>
+                  <Component id="txtAreaAtuacao" max="32767" attributes="0"/>
                   <Component id="ftxtCelular" alignment="0" max="32767" attributes="0"/>
                   <Component id="ftxtTelRes" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -113,14 +117,14 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" linkSize="1" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                  <Component id="labelEndereco" linkSize="1" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="txtEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelN" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNumero" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" linkSize="1" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                  <Component id="labelBairro" linkSize="1" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="txtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelCEP" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ftxtCEP" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -132,6 +136,8 @@
                       <Component id="txtMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labelTelRes" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ftxtTelRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -146,7 +152,7 @@
                   <Component id="labelFormacao" linkSize="1" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
                   <Component id="txtFormacao" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelAreaAt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAreaAtuacao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -182,12 +188,12 @@
         <Property name="text" type="java.lang.String" value="Sexo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="labelEndereco">
       <Properties>
         <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="labelBairro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bairro"/>
       </Properties>
@@ -415,10 +421,53 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="txtAreaAtuacao">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelEstado">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Estado"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="27">
+            <StringItem index="0" value="AC"/>
+            <StringItem index="1" value="AL"/>
+            <StringItem index="2" value="AP"/>
+            <StringItem index="3" value="AM"/>
+            <StringItem index="4" value="BA"/>
+            <StringItem index="5" value="CE"/>
+            <StringItem index="6" value="DF"/>
+            <StringItem index="7" value="ES"/>
+            <StringItem index="8" value="GO"/>
+            <StringItem index="9" value="MA"/>
+            <StringItem index="10" value="MT"/>
+            <StringItem index="11" value="MS"/>
+            <StringItem index="12" value="MG"/>
+            <StringItem index="13" value="PA"/>
+            <StringItem index="14" value="PB"/>
+            <StringItem index="15" value="PR"/>
+            <StringItem index="16" value="PE"/>
+            <StringItem index="17" value="PI"/>
+            <StringItem index="18" value="RJ"/>
+            <StringItem index="19" value="RN"/>
+            <StringItem index="20" value="RS"/>
+            <StringItem index="21" value="RO"/>
+            <StringItem index="22" value="RR"/>
+            <StringItem index="23" value="SC"/>
+            <StringItem index="24" value="SP"/>
+            <StringItem index="25" value="SE"/>
+            <StringItem index="26" value="TO"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

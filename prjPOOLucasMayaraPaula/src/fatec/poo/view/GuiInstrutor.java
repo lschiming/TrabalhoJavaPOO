@@ -163,7 +163,11 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
         lblAreaAt.setText("Área de Atuação");
 
-        ftxtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        try {
+            ftxtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         ftxtDataNascimento.setEnabled(false);
 
         cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteira", "Casada", "União Estável", "Viuva", "Divorciada", "Outro" }));

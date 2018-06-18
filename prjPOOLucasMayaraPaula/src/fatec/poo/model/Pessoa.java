@@ -74,5 +74,6 @@ private String bairro, cidade, nome,
     public void setNumero(int numero) {
         this.numero = numero;
     }
+    
 
 }

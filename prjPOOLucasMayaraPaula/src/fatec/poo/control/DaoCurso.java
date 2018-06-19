@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,7 +28,7 @@ public class DaoCurso {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("INSERT INTO tbcurso(SiglaCurso, NomeCurso, dataVigencia, programa,"
-                                      + "CargaHor, Valor, ValHorInstr) VALUES(?,?,?,?,?,?,?");
+                                      + "CargaHor, Valor, ValHorInstr) VALUES(?,?,?,?,?,?,?)");
             ps.setString(1, curso.getSigla());
             ps.setString(2, curso.getNome());
             ps.setString(3, curso.getDataVigencia());
@@ -90,5 +91,22 @@ public class DaoCurso {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
+    }
+    
+    public ArrayList<String> listarSiglas(ArrayList siglas){
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("SELECT sigla FROM tbcurso ORDER BY sigla");
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                siglas.add(rs.getString(1));
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        
+        return siglas;
     }
 }

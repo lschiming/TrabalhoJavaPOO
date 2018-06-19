@@ -5,6 +5,10 @@
  */
 package fatec.poo.view;
 
+import fatec.poo.control.Conexao;
+import fatec.poo.control.DaoCurso;
+import java.util.ArrayList;
+
 /**
  *
  * @author Asus
@@ -48,6 +52,11 @@ public class GuiTurma extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblCurso.setText("Curso");
 
@@ -199,6 +208,16 @@ public class GuiTurma extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        
+        ArrayList<String> siglas = new ArrayList<>();
+        siglas = daoCurso.listarSiglas(siglas);
+        for (int i = 0; i < siglas.size(); i++) {
+            cbxCurso.addItem(siglas.get(i));
+        }
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -255,4 +274,8 @@ public class GuiTurma extends javax.swing.JFrame {
     private javax.swing.JTextField txtQtdeVagas;
     private javax.swing.JTextField txtSiglaTurma;
     // End of variables declaration//GEN-END:variables
+    private DaoCurso daoCurso = null;
+    private DaoTurma daoTurma = null;
+    private Conexao conexao = null;
+    
 }

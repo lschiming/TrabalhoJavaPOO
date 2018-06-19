@@ -278,11 +278,71 @@ public class GuiCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
+        curso = null;
+        curso = daoCurso.consultar(txtSiglaCurso.getText());
+        
+        if (curso == null){
+            txtSiglaCurso.setEnabled(false);
+            txtNomeCurso.setEnabled(true);
+            txtProgCurso.setEnabled(true);
+            txtCargaHoraria.setEnabled(true);
+            txtValCurso.setEnabled(true);
+            txtValHorInst.setEnabled(true);
+            ftxtDtVigencia.setEnabled(true);
+            txtNomeCurso.requestFocus();
+            
+            btnConsultar.setEnabled(false);
+            btnInserir.setEnabled(true);
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+        }else{
+            txtNomeCurso.setText(curso.getNome());
+            
+            txtSiglaCurso.setEnabled(false);
+            txtNomeCurso.setEnabled(true);
+            txtProgCurso.setEnabled(true);
+            txtCargaHoraria.setEnabled(true);
+            txtValCurso.setEnabled(true);
+            txtValHorInst.setEnabled(true);
+            ftxtDtVigencia.setEnabled(true);
+            txtNomeCurso.requestFocus();
+            
+            btnConsultar.setEnabled(false);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(true);
+            btnExcluir.setEnabled(true);
+            
+        }                                         
+
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(null, "Confirma Alteração") == 0){
+           curso.setNome(txtNomeCurso.getText());
+           daoCurso.alterar(curso);
+       }
+       
+       txtSiglaCurso.setText("");
+       txtNomeCurso.setText("");
+       txtProgCurso.setText("");
+       txtCargaHoraria.setText("");
+       txtValCurso.setText("");
+       txtValHorInst.setText("");
+       ftxtDtVigencia.setText("");
+       
+       txtSiglaCurso.setEnabled(true);
+       txtNomeCurso.setEnabled(false);
+       txtProgCurso.setEnabled(false);
+       txtCargaHoraria.setEnabled(false);
+       txtValCurso.setEnabled(false);
+       txtValHorInst.setEnabled(false);
+       ftxtDtVigencia.setEnabled(false);
+       txtSiglaCurso.requestFocus();
+       
+       btnConsultar.setEnabled(true);
+       btnInserir.setEnabled(false);
+       btnAlterar.setEnabled(false);
+       btnSair.setEnabled(false);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed

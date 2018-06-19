@@ -5,6 +5,11 @@
  */
 package fatec.poo.view;
 
+import fatec.poo.control.Conexao;
+import fatec.poo.control.DaoCurso;
+import fatec.poo.model.Curso;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Asus
@@ -49,6 +54,14 @@ public class GuiCurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Curso");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblSiglaCurso.setText("Sigla curso");
 
@@ -83,18 +96,38 @@ public class GuiCurso extends javax.swing.JFrame {
 
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/pesq.png"))); // NOI18N
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/add.png"))); // NOI18N
         btnInserir.setText("Inserir");
         btnInserir.setEnabled(false);
+        btnInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserirActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setEnabled(false);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Eraser.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setEnabled(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/exit.png"))); // NOI18N
         btnSair.setText("Sair");
@@ -208,6 +241,75 @@ public class GuiCurso extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        conexao = new Conexao("system","ashiteru");
+        conexao.setDriver("oracle.jdbc.driver.OracleDivrer");
+        conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
+        daoCurso = new DaoCurso(conexao.conectar());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        conexao.fecharConexao();
+        dispose();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
+        curso = new Curso(txtSiglaCurso.getText(), txtNomeCurso.getText());
+        daoCurso.inserir(curso);
+        
+        txtSiglaCurso.setText("");
+        txtNomeCurso.setText("");
+        txtProgCurso.setText("");
+        txtCargaHoraria.setText("");
+        txtValCurso.setText("");
+        txtValHorInst.setText("");
+        
+        btnInserir.setEnabled(false);
+        txtSiglaCurso.setEnabled(true);
+        txtNomeCurso.setEnabled(false);
+        txtProgCurso.setEnabled(false);
+        txtCargaHoraria.setEnabled(false);
+        txtValCurso.setEnabled(false);
+        txtValHorInst.setEnabled(false);
+        txtNomeCurso.requestFocus();
+        
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+    }//GEN-LAST:event_btnInserirActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0){
+            daoCurso.excluir(curso);
+            
+            txtSiglaCurso.setText("");
+            txtNomeCurso.setText("");
+            txtProgCurso.setText("");
+            txtCargaHoraria.setText("");
+            txtValCurso.setText("");
+            txtValHorInst.setText("");
+            txtSiglaCurso.setEnabled(true);
+            txtNomeCurso.setEnabled(false);
+            txtProgCurso.setEnabled(false);
+            txtCargaHoraria.setEnabled(false);
+            txtValCurso.setEnabled(false);
+            txtValHorInst.setEnabled(false);
+            txtSiglaCurso.requestFocus();
+            
+            btnConsultar.setEnabled(true);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -264,4 +366,7 @@ public class GuiCurso extends javax.swing.JFrame {
     private javax.swing.JTextField txtValCurso;
     private javax.swing.JTextField txtValHorInst;
     // End of variables declaration//GEN-END:variables
+    private DaoCurso daoCurso = null;
+    private Curso curso = null;
+    private Conexao conexao = null;
 }

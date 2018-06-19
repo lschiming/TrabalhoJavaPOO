@@ -27,4 +27,17 @@ public class Matricula {
     public void setTurma(Turma turma) {
         this.turma = turma;
     }
+
+    public String getData() {
+        return data;
+    }
+
+    public int getQtdeFaltas() {
+        return qtdeFaltas;
+    }
+
+    public double getNota() {
+        return nota;
+    }
+    
 }

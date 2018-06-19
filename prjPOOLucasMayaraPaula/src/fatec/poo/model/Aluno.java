@@ -9,6 +9,8 @@ public class Aluno extends Pessoa {
         super(cpf, nome);
     }
 
+  
+
     public void setEscolaridade(String escolaridade) {
         this.escolaridade = escolaridade;
     }
@@ -21,6 +23,8 @@ public class Aluno extends Pessoa {
         this.matricula = matricula;
     }
 
-
+    public String getEscolaridade() {
+        return escolaridade;
+    }
 
 }

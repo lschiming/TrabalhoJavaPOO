@@ -242,7 +242,7 @@ public class GuiCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        conexao = new Conexao("system","ashiteru");
+        conexao = new Conexao("poo","trabalhopoo");
         conexao.setDriver("oracle.jdbc.driver.OracleDivrer");
         conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
         daoCurso = new DaoCurso(conexao.conectar());

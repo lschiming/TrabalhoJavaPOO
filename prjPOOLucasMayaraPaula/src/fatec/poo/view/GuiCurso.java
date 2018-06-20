@@ -254,16 +254,23 @@ public class GuiCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        curso = new Curso(txtSiglaCurso.getText(), txtNomeCurso.getText());
+         curso = new Curso(txtSiglaCurso.getText(), txtNomeCurso.getText());
+        curso.setPrograma(txtProgCurso.getText());
+        curso.setCargaHoraria(Integer.valueOf(txtCargaHoraria.getText()));
+        curso.setValor(Double.valueOf(txtValCurso.getText()));
+        curso.setValorHoraInstrutor(Double.valueOf(txtValHorInst.getText()));
+        curso.setDataVigencia(ftxtDtVigencia.getText());
+
         daoCurso.inserir(curso);
-        
+
         txtSiglaCurso.setText("");
         txtNomeCurso.setText("");
         txtProgCurso.setText("");
         txtCargaHoraria.setText("");
         txtValCurso.setText("");
         txtValHorInst.setText("");
-        
+        ftxtDtVigencia.setText("");
+
         btnInserir.setEnabled(false);
         txtSiglaCurso.setEnabled(true);
         txtNomeCurso.setEnabled(false);
@@ -271,17 +278,18 @@ public class GuiCurso extends javax.swing.JFrame {
         txtCargaHoraria.setEnabled(false);
         txtValCurso.setEnabled(false);
         txtValHorInst.setEnabled(false);
+        ftxtDtVigencia.setEnabled(false);
         txtNomeCurso.requestFocus();
-        
+
         btnConsultar.setEnabled(true);
         btnInserir.setEnabled(false);
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        curso = null;
+       curso = null;
         curso = daoCurso.consultar(txtSiglaCurso.getText());
-        
-        if (curso == null){
+
+        if (curso == null) {
             txtSiglaCurso.setEnabled(false);
             txtNomeCurso.setEnabled(true);
             txtProgCurso.setEnabled(true);
@@ -290,14 +298,14 @@ public class GuiCurso extends javax.swing.JFrame {
             txtValHorInst.setEnabled(true);
             ftxtDtVigencia.setEnabled(true);
             txtNomeCurso.requestFocus();
-            
+
             btnConsultar.setEnabled(false);
             btnInserir.setEnabled(true);
             btnAlterar.setEnabled(false);
             btnExcluir.setEnabled(false);
-        }else{
+        } else {
             txtNomeCurso.setText(curso.getNome());
-            
+
             txtSiglaCurso.setEnabled(false);
             txtNomeCurso.setEnabled(true);
             txtProgCurso.setEnabled(true);
@@ -306,50 +314,52 @@ public class GuiCurso extends javax.swing.JFrame {
             txtValHorInst.setEnabled(true);
             ftxtDtVigencia.setEnabled(true);
             txtNomeCurso.requestFocus();
-            
+
             btnConsultar.setEnabled(false);
             btnInserir.setEnabled(false);
             btnAlterar.setEnabled(true);
             btnExcluir.setEnabled(true);
-            
-        }                                         
+
+        }                  
 
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        if(JOptionPane.showConfirmDialog(null, "Confirma Alteração") == 0){
-           curso = new Curso(txtSiglaCurso.getText(),txtNomeCurso.getText());
-           curso.setNome(txtNomeCurso.getText());
-           daoCurso.alterar(curso);
-       }
-       
-       txtSiglaCurso.setText("");
-       txtNomeCurso.setText("");
-       txtProgCurso.setText("");
-       txtCargaHoraria.setText("");
-       txtValCurso.setText("");
-       txtValHorInst.setText("");
-       ftxtDtVigencia.setText("");
-       
-       txtSiglaCurso.setEnabled(true);
-       txtNomeCurso.setEnabled(false);
-       txtProgCurso.setEnabled(false);
-       txtCargaHoraria.setEnabled(false);
-       txtValCurso.setEnabled(false);
-       txtValHorInst.setEnabled(false);
-       ftxtDtVigencia.setEnabled(false);
-       txtSiglaCurso.requestFocus();
-       
-       btnConsultar.setEnabled(true);
-       btnInserir.setEnabled(false);
-       btnAlterar.setEnabled(false);
-       btnSair.setEnabled(false);
+        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração") == 0) {
+            curso = new Curso(txtSiglaCurso.getText(), txtNomeCurso.getText());
+            curso.setNome(txtNomeCurso.getText());
+            
+
+            daoCurso.alterar(curso);
+        }
+
+        txtSiglaCurso.setText("");
+        txtNomeCurso.setText("");
+        txtProgCurso.setText("");
+        txtCargaHoraria.setText("");
+        txtValCurso.setText("");
+        txtValHorInst.setText("");
+        ftxtDtVigencia.setText("");
+
+        txtSiglaCurso.setEnabled(true);
+        txtNomeCurso.setEnabled(false);
+        txtProgCurso.setEnabled(false);
+        txtCargaHoraria.setEnabled(false);
+        txtValCurso.setEnabled(false);
+        txtValHorInst.setEnabled(false);
+        ftxtDtVigencia.setEnabled(false);
+        txtSiglaCurso.requestFocus();
+
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if(JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0){
+       if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {
             daoCurso.excluir(curso);
-            
+
             txtSiglaCurso.setText("");
             txtNomeCurso.setText("");
             txtProgCurso.setText("");
@@ -363,7 +373,7 @@ public class GuiCurso extends javax.swing.JFrame {
             txtValCurso.setEnabled(false);
             txtValHorInst.setEnabled(false);
             txtSiglaCurso.requestFocus();
-            
+
             btnConsultar.setEnabled(true);
             btnInserir.setEnabled(false);
             btnAlterar.setEnabled(false);

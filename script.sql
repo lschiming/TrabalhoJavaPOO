@@ -70,7 +70,7 @@ CREATE TABLE tbcurso (
   CONSTRAINT pk_curso PRIMARY KEY (sigla)
 );
 
-CREATE TABLE turma (
+CREATE TABLE tbturma (
   siglaturma    VARCHAR2(  5) NOT NULL,
   siglacurso    VARCHAR2(  5) NOT NULL,
   descricao     VARCHAR2(100) NOT NULL,

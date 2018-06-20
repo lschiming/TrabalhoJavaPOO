@@ -28,14 +28,14 @@ public class DaoCurso {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("INSERT INTO tbcurso(SiglaCurso, NomeCurso, dataVigencia, programa,"
-                                      + "CargaHor, Valor, ValHorInstr) VALUES(?,?,?,?,?,?,?)");
+                    + "CargaHor, Valor, ValHorInstr) VALUES(?,?,?,?,?,?,?)");
             ps.setString(1, curso.getSigla());
             ps.setString(2, curso.getNome());
             ps.setString(3, curso.getDataVigencia());
             ps.setString(4, curso.getPrograma());
-            ps.setString(5, (Integer.valueOf(curso.getCargaHoraria())));
-            ps.setString(6, (Double.valueOf(curso.getValor())));
-            ps.setString(7, (Double.valueOf(curso.getValorHoraInstrutor())));
+            ps.setInt(5, (Integer.valueOf(curso.getCargaHoraria())));
+            ps.setDouble(6, (Double.valueOf(curso.getValor())));
+            ps.setDouble(7, (Double.valueOf(curso.getValorHoraInstrutor())));
 
             ps.execute();
         } catch (SQLException ex) {
@@ -53,9 +53,9 @@ public class DaoCurso {
             ps.setString(1, curso.getNome());
             ps.setString(2, curso.getDataVigencia());
             ps.setString(3, curso.getPrograma());
-            ps.setString(4, (Integer.valueOf(curso.getCargaHoraria())));
-            ps.setString(5, (Double.valueOf(curso.getValor())));
-            ps.setString(6, (Double.valueOf(curso.getValorHoraInstrutor())));
+            ps.setInt(4, (Integer.valueOf(curso.getCargaHoraria())));
+            ps.setDouble(5, (Double.valueOf(curso.getValor())));
+            ps.setDouble(6, (Double.valueOf(curso.getValorHoraInstrutor())));
 
             ps.execute();
         } catch (SQLException ex) {
@@ -69,7 +69,7 @@ public class DaoCurso {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("SELECT * from tbcurso where"
-                                        + " SiglaCurso = ?");
+                    + " SiglaCurso = ?");
 
             ps.setString(1, sigla);
             ResultSet rs = ps.executeQuery();
@@ -92,21 +92,21 @@ public class DaoCurso {
             System.out.println(ex.toString());
         }
     }
-    
-    public ArrayList<String> listarSiglas(ArrayList siglas){
+
+    public ArrayList<String> listarSiglas(ArrayList siglas) {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("SELECT sigla FROM tbcurso ORDER BY sigla");
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 siglas.add(rs.getString(1));
             }
-            
+
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        
+
         return siglas;
     }
 }

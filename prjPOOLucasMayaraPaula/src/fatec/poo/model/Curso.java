@@ -35,6 +35,11 @@ public class Curso {
         this.valorHoraInstrutor = valorHoraInstrutor;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    
     public void addTurma(Turma t) {
         turmas.add(t);
         t.setCurso(this);

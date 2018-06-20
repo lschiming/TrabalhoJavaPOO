@@ -318,6 +318,7 @@ public class GuiCurso extends javax.swing.JFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         if(JOptionPane.showConfirmDialog(null, "Confirma Alteração") == 0){
+           curso = new Curso(txtSiglaCurso.getText(),txtNomeCurso.getText());
            curso.setNome(txtNomeCurso.getText());
            daoCurso.alterar(curso);
        }

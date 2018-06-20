@@ -1,5 +1,9 @@
-
 package fatec.poo.view;
+
+import fatec.poo.control.Conexao;
+import fatec.poo.control.DaoCurso;
+import fatec.poo.control.DaoInstrutor;
+import fatec.poo.model.Instrutor;
 
 /**
  *
@@ -7,14 +11,22 @@ package fatec.poo.view;
  */
 public class GuiInstrutor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GuiInstrutor
-     */
+    private DaoInstrutor daoInstrutor = null;
+    private Instrutor instrutor = null;
+    private Conexao conexao = null;
+    
     public GuiInstrutor() {
         initComponents();
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            /*public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }*/
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -392,7 +404,12 @@ public class GuiInstrutor extends javax.swing.JFrame {
     private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBairroActionPerformed
-
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
+        conexao = new Conexao("SYSTEM","21042531");
+        conexao.setDriver("oracle.jdbc.driver.OracleDivrer");
+        conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
+        daoInstrutor = new DaoInstrutor(conexao.conectar());
+    }
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
@@ -403,10 +420,10 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
         //validar cpf
-        
+
         // se valido
-            // buscar dados no banco
-            // return
+        // buscar dados no banco
+        // return
         // mensagem de erro
     }//GEN-LAST:event_btnProcurarActionPerformed
 

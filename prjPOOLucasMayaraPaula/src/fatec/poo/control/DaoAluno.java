@@ -13,7 +13,7 @@ public class DaoAluno {
     
        private Connection conn;
 
-    public DaoInstrutor(Connection conn) {
+    public DaoAluno(Connection conn) {
         this.conn = conn;
     }
 
@@ -39,7 +39,7 @@ public class DaoAluno {
             ps.setString(11, aluno.getBairro());
             ps.setString(12, aluno.getCidade());
             ps.setString(13, aluno.getEstado());
-            ps.setString(14, aluno.getCEP());
+            ps.setString(14, aluno.getCep());
             ps.setString(15, aluno.getEmail());
             ps.setString(16, aluno.getEscolaridade());
                               

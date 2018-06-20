@@ -26,10 +26,10 @@ public class DaoInstrutor {
             ps = conn.prepareStatement("INSERT INTO tbinstrutor(CPF,NOME,DATANASC,RG,SEXO,"
                     + "ESTADOCIVIL,TELEFONE,CELULAR,ENDERECO,NUMERO,BAIRRO,CIDADE,ESTADO,"
                     + "CEP,EMAIL,FORMACAO,AREAATUACAO) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            ps.setString(1, instrutor.getCPF());
+            ps.setString(1, instrutor.getCpf());
             ps.setString(2, instrutor.getNome()); 
-            ps.setString(3, instrutor.getDataNasc); 
-            ps.setString(4, instrutor.getRG()); 
+            ps.setString(3, instrutor.getDataNasc()); 
+            ps.setString(4, instrutor.getRg()); 
             ps.setString(5, instrutor.getSexo()); 
             ps.setString(6, instrutor.getEstadoCivil()); 
             ps.setString(7, instrutor.getTelefone()); 
@@ -39,7 +39,7 @@ public class DaoInstrutor {
             ps.setString(11, instrutor.getBairro());
             ps.setString(12, instrutor.getCidade());
             ps.setString(13, instrutor.getEstado());
-            ps.setString(14, instrutor.getCEP());
+            ps.setString(14, instrutor.getCep());
             ps.setString(15, instrutor.getEmail());
             ps.setString(16, instrutor.getFormacao());
             ps.setString(17, instrutor.getAreaAtuacao());

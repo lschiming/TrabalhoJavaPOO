@@ -26,10 +26,10 @@ public class DaoAluno {
                     + "RG,SEXO,ESTADOCIVIL,TELEFONE,CELULAR,ENDERECO,NUMERO,"
                     + "BAIRRO,CIDADE,ESTADO,CEP,EMAIL,ESCOLARIDARE) "
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            ps.setString(1, aluno.getCPF());
+            ps.setString(1, aluno.getCpf());
             ps.setString(2, aluno.getNome()); 
-            ps.setString(3, aluno.getDataNasc); 
-            ps.setString(4, aluno.getRG()); 
+            ps.setString(3, aluno.getDataNasc()); 
+            ps.setString(4, aluno.getRg()); 
             ps.setString(5, aluno.getSexo()); 
             ps.setString(6, aluno.getEstadoCivil()); 
             ps.setString(7, aluno.getTelefone()); 

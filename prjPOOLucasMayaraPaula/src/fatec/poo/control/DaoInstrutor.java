@@ -23,11 +23,13 @@ public class DaoInstrutor {
         PreparedStatement ps = null;
         
         try {
-            ps = conn.prepareStatement("INSERT INTO tbinstrutor(CPF,NOME,DATANASC,RG,SEXO,ESTADOCIVIL,TELEFONE,CELULAR,ENDERECO,NUMERO,BAIRRO,CIDADE,ESTADO,CEP,EMAIL,FORMACAO,AREAATUACAO) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            ps = conn.prepareStatement("INSERT INTO tbinstrutor(CPF,NOME,DATANASC,RG,SEXO,"
+                    + "ESTADOCIVIL,TELEFONE,CELULAR,ENDERECO,NUMERO,BAIRRO,CIDADE,ESTADO,"
+                    + "CEP,EMAIL,FORMACAO,AREAATUACAO) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, instrutor.getCPF());
             ps.setString(2, instrutor.getNome()); 
             ps.setString(3, instrutor.getDataNasc); 
-            ps.setString(4, instrutor.geRG()); 
+            ps.setString(4, instrutor.getRG()); 
             ps.setString(5, instrutor.getSexo()); 
             ps.setString(6, instrutor.getEstadoCivil()); 
             ps.setString(7, instrutor.getTelefone()); 

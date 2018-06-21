@@ -126,7 +126,7 @@ public class DaoInstrutor {
     public void excluir(Instrutor instrutor) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("DELETE FROM TBINSTRUTOR where WHERE CPF = ?");
+            ps = conn.prepareStatement("DELETE FROM TBINSTRUTOR WHERE CPF = ?");
 
             ps.setString(1, instrutor.getCpf());
 

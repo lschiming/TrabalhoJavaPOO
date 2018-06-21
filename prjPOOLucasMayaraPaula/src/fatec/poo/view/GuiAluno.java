@@ -1,20 +1,32 @@
 package fatec.poo.view;
 
+import fatec.poo.control.Conexao;
+import fatec.poo.control.DaoAluno;
 import fatec.poo.control.Helper;
+import javax.swing.JOptionPane;
+import fatec.poo.model.Aluno;
 
 /**
  *
  * @author sartori
  */
 public class GuiAluno extends javax.swing.JFrame {
-    
-    private Helper helper = new Helper();
 
-    /**
-     * Creates new form GuiAluno
-     */
+    private Helper helper = new Helper();
+    private Conexao conexao = null;
+    private Aluno aluno = null;
+    private DaoAluno daoAluno = null;
+
     public GuiAluno() {
         initComponents();
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            /*public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }*/
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -171,14 +183,29 @@ public class GuiAluno extends javax.swing.JFrame {
         btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/add.png"))); // NOI18N
         btnInserir.setText("Inserir");
         btnInserir.setEnabled(false);
+        btnInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserirActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setEnabled(false);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/rem.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setEnabled(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/exit.png"))); // NOI18N
         btnSair.setText("Sair");
@@ -316,18 +343,197 @@ public class GuiAluno extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
+        conexao = new Conexao("poo", "trabalhopoo");
+        conexao.setDriver("oracle.jdbc.driver.OracleDriver");
+        conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
+        daoAluno = new DaoAluno(conexao.conectar());
+    }
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        if (helper.isCpfValid("74175869060")) {
-            System.out.println("foi");
-            return;
+        String cpf = ftxtCPF.getText().replaceAll("[.-]", "");
+        System.out.println(helper.isCpfValid(cpf));
+        if (helper.isCpfValid(cpf)) {
+            txtNome.setEnabled(true);
+            ftxtDtNasc.setEnabled(true);
+            ftxtRG.setEnabled(true);
+            cbxSexo.setEnabled(true);
+            cbxEstCivil.setEnabled(true);
+            ftxtTelefone.setEnabled(true);
+            ftxtCelular.setEnabled(true);
+            txtEnd.setEnabled(true);
+            txtNum.setEnabled(true);
+            txtBairro.setEnabled(true);
+            txtMun.setEnabled(true);
+            cbxEstado.setEnabled(true);
+            ftxtCEP.setEnabled(true);
+            txtEmail.setEnabled(true);
+            cbxEscolaridade.setEnabled(true);
+
+            Aluno aluno = daoAluno.consultar(cpf);
+
+            if (aluno != null) {
+                txtNome.setText(aluno.getNome());
+                ftxtDtNasc.setText(aluno.getDataNasc());
+                ftxtRG.setText(aluno.getRg());
+                cbxSexo.setSelectedItem(aluno.getSexo());
+                cbxEstCivil.setSelectedItem(aluno.getEstadoCivil());
+                ftxtTelefone.setText(aluno.getTelefone());
+                ftxtCelular.setText(aluno.getCelular());
+                txtEnd.setText(aluno.getEndereco());
+                txtNum.setText(Integer.toString(aluno.getNumero()));
+                txtBairro.setText(aluno.getBairro());
+                txtMun.setText(aluno.getCidade());
+                cbxEstado.setSelectedItem(aluno.getEstado());
+                ftxtCEP.setText(aluno.getCep());
+                txtEmail.setText(aluno.getEmail());
+                cbxEscolaridade.setSelectedItem(aluno.getEscolaridade());
+               
+                btnAlterar.setEnabled(true);
+                btnExcluir.setEnabled(true);
+            } else {
+                btnInserir.setEnabled(true);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "CPF Invalido");
+            ftxtCPF.requestFocus();
+
         }
-        System.out.println("nao");
     }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
+        aluno = new Aluno(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
+
+        aluno.setDataNasc(ftxtDtNasc.getText());
+        aluno.setRg(ftxtRG.getText().replaceAll("[.-]", ""));
+        aluno.setSexo(cbxSexo.getSelectedItem().toString());
+        aluno.setEstadoCivil(cbxEstCivil.getSelectedItem().toString());
+        aluno.setTelefone(ftxtTelefone.getText().replaceAll("[()-]", ""));;
+        aluno.setCelular(ftxtCelular.getText().replaceAll("[()-]", ""));
+        aluno.setEndereco(txtEnd.getText());
+        aluno.setNumero(Integer.parseInt(txtNum.getText()));
+        aluno.setBairro(txtBairro.getText());;
+        aluno.setCidade(txtMun.getText());
+        aluno.setEstado(cbxEstado.getSelectedItem().toString());
+        aluno.setCep(ftxtCEP.getText().replaceAll("[-]", ""));
+        aluno.setEmail(txtEmail.getText());
+        aluno.setEscolaridade(cbxEscolaridade.getSelectedItem().toString());
+        
+
+        daoAluno.inserir(aluno);
+
+        txtNome.setText("");
+        ftxtDtNasc.setText("");
+        ftxtRG.setText("");
+        ftxtTelefone.setText("");
+        ftxtCelular.setText("");
+        txtEnd.setText("");
+        txtNum.setText("");
+        txtBairro.setText("");
+        txtMun.setText("");
+        ftxtCEP.setText("");
+        txtEmail.setText("");
+        
+        
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        ftxtCPF.requestFocus();
+        ftxtCPF.setEnabled(true);
+        txtNome.setEnabled(false);
+        ftxtDtNasc.setEnabled(false);
+        ftxtRG.setEnabled(false);
+        cbxSexo.setEnabled(false);
+        cbxEstCivil.setEnabled(false);
+        ftxtTelefone.setEnabled(false);
+        ftxtCelular.setEnabled(false);
+        txtEnd.setEnabled(false);
+        txtNum.setEnabled(false);
+        txtBairro.setEnabled(false);
+        txtMun.setEnabled(false);
+        ftxtCEP.setEnabled(false);
+        txtEmail.setEnabled(false);
+        cbxEscolaridade.setEnabled(false);
+        
+
+        JOptionPane.showMessageDialog(null, "Aluno Inserido");
+
+    }//GEN-LAST:event_btnInserirActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração") == 0) {
+            aluno = new Aluno(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
+            aluno.setDataNasc(ftxtDtNasc.getText());
+            aluno.setRg(ftxtRG.getText().replaceAll("[.-]", ""));
+            aluno.setSexo(cbxSexo.getSelectedItem().toString());
+            aluno.setEstadoCivil(cbxEstCivil.getSelectedItem().toString());
+            aluno.setTelefone(ftxtTelefone.getText().replaceAll("[()-]", ""));;
+            aluno.setCelular(ftxtCelular.getText().replaceAll("[()-]", ""));
+            aluno.setEndereco(txtEnd.getText());
+            aluno.setNumero(Integer.parseInt(txtNum.getText()));
+            aluno.setBairro(txtBairro.getText());;
+            aluno.setCidade(txtMun.getText());
+            aluno.setEstado(cbxEstado.getSelectedItem().toString());
+            aluno.setCep(ftxtCEP.getText().replaceAll("[-]", ""));
+            aluno.setEmail(txtEmail.getText());
+            aluno.setEscolaridade(cbxEscolaridade.getSelectedItem().toString());
+            
+
+            daoAluno.alterar(aluno);
+
+            txtNome.setText("");
+            ftxtDtNasc.setText("");
+            ftxtRG.setText("");
+            ftxtTelefone.setText("");
+            ftxtCelular.setText("");
+            txtEnd.setText("");
+            txtNum.setText("");
+            txtBairro.setText("");
+            txtMun.setText("");
+            ftxtCEP.setText("");
+            txtEmail.setText("");
+            btnConsultar.setEnabled(true);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(false);
+            ftxtCPF.requestFocus();
+            ftxtCPF.setEnabled(true);
+            txtNome.setEnabled(false);
+            ftxtDtNasc.setEnabled(false);
+            ftxtRG.setEnabled(false);
+            cbxSexo.setEnabled(false);
+            cbxEstCivil.setEnabled(false);
+            ftxtTelefone.setEnabled(false);
+            ftxtCelular.setEnabled(false);
+            txtEnd.setEnabled(false);
+            txtNum.setEnabled(false);
+            txtBairro.setEnabled(false);
+            txtMun.setEnabled(false);
+            ftxtCEP.setEnabled(false);
+            txtEmail.setEnabled(false);
+            cbxEscolaridade.setEnabled(false);
+            
+
+            JOptionPane.showMessageDialog(null, "Atualizado com Sucesso");
+        }
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {
+            aluno = new Aluno(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
+            daoAluno.excluir(aluno);
+
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+    
 
     /**
      * @param args the command line arguments

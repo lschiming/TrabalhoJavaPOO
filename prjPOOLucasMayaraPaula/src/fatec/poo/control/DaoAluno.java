@@ -25,7 +25,7 @@ public class DaoAluno {
         try {
             ps = conn.prepareStatement("INSERT INTO tbaluno(CPF,NOME,DATANASC,"
                     + "RG,SEXO,ESTADOCIVIL,TELEFONE,CELULAR,ENDERECO,NUMERO,"
-                    + "BAIRRO,CIDADE,ESTADO,CEP,EMAIL,ESCOLARIDARE) "
+                    + "BAIRRO,CIDADE,ESTADO,CEP,EMAIL,escolaridade) "
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, aluno.getCpf());
             ps.setString(2, aluno.getNome());
@@ -90,14 +90,14 @@ public class DaoAluno {
 
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("SELECT * from TBINSTRUTOR where "
-                    + "CPF = ?");
+            ps = conn.prepareStatement("SELECT * from TBALUNO where "
+                    + "cpf = ?");
 
             ps.setString(1, cpf);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next() == true) {
-                aluno = new Aluno(cpf, rs.getString("NOME"));
+                aluno = new Aluno(cpf, rs.getString("nome"));
 
                 aluno.setDataNasc(rs.getString("datanasc"));
                 aluno.setRg(rs.getString("rg"));

@@ -138,7 +138,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         });
 
         btnProcurar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/pesq.png"))); // NOI18N
-        btnProcurar.setText("Procurar");
+        btnProcurar.setLabel("Consultar");
         btnProcurar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcurarActionPerformed(evt);
@@ -438,18 +438,21 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+        btnProcurar.getAccessibleContext().setAccessibleName("Consultar");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBairroActionPerformed
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         conexao = new Conexao("poo", "trabalhopoo");
         conexao.setDriver("oracle.jdbc.driver.OracleDriver");
         conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
         daoInstrutor = new DaoInstrutor(conexao.conectar());
     }
+    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBairroActionPerformed
+
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
@@ -645,7 +648,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {
             instrutor = new Instrutor(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
             daoInstrutor.excluir(instrutor);
-            
+
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 

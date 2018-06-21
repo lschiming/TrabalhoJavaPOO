@@ -157,6 +157,11 @@ public class GuiInstrutor extends javax.swing.JFrame {
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setEnabled(false);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/rem.png"))); // NOI18N
         btnExcluir.setText("Excluir");
@@ -496,7 +501,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
         instrutor = new Instrutor(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
-        
+
         instrutor.setDataNasc(ftxtDataNascimento.getText());
         instrutor.setRg(ftxtRG.getText().replaceAll("[.-]", ""));
         instrutor.setSexo(cbxSexo.getSelectedItem().toString());
@@ -512,10 +517,10 @@ public class GuiInstrutor extends javax.swing.JFrame {
         instrutor.setEmail(txtEmail.getText());
         instrutor.setFormacao(txtFormacao.getText());
         instrutor.setAreaAtuacao(txtAreaAtuacao.getText());
-        
+
         daoInstrutor.inserir(instrutor);
-                
-        txtNome.setText("");  
+
+        txtNome.setText("");
         ftxtDataNascimento.setText("");
         ftxtRG.setText("");
         ftxtTelRes.setText("");
@@ -529,7 +534,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         txtFormacao.setText("");
         txtAreaAtuacao.setText("");
         btnProcurar.setEnabled(true);
-        btnInserir.setEnabled(false);        
+        btnInserir.setEnabled(false);
         btnAlterar.setEnabled(false);
         ftxtCPF.requestFocus();
         ftxtCPF.setEnabled(true);
@@ -548,15 +553,78 @@ public class GuiInstrutor extends javax.swing.JFrame {
         txtEmail.setEnabled(false);
         txtFormacao.setEnabled(false);
         txtAreaAtuacao.setEnabled(false);
-        
-         JOptionPane.showMessageDialog(null, "Instrutor Inserido");
-        
-        
+
+        JOptionPane.showMessageDialog(null, "Instrutor Inserido");
+
+
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void ftxtTelResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtTelResActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ftxtTelResActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração") == 0) {
+            instrutor = new Instrutor(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
+            instrutor.setDataNasc(ftxtDataNascimento.getText());
+            instrutor.setRg(ftxtRG.getText().replaceAll("[.-]", ""));
+            instrutor.setSexo(cbxSexo.getSelectedItem().toString());
+            instrutor.setEstadoCivil(cbxEstadoCivil.getSelectedItem().toString());
+            instrutor.setTelefone(ftxtTelRes.getText().replaceAll("[()-]", ""));;
+            instrutor.setCelular(ftxtCelular.getText().replaceAll("[()-]", ""));
+            instrutor.setEndereco(txtEndereco.getText());
+            instrutor.setNumero(Integer.parseInt(txtNumero.getText()));
+            instrutor.setBairro(txtBairro.getText());;
+            instrutor.setCidade(txtMunicipio.getText());
+            instrutor.setEstado(cbxEstado.getSelectedItem().toString());
+            instrutor.setCep(ftxtCEP.getText().replaceAll("[-]", ""));
+            instrutor.setEmail(txtEmail.getText());
+            instrutor.setFormacao(txtFormacao.getText());
+            instrutor.setAreaAtuacao(txtAreaAtuacao.getText());
+
+            daoInstrutor.alterar(instrutor);
+
+            txtNome.setText("");
+            ftxtDataNascimento.setText("");
+            ftxtRG.setText("");
+            ftxtTelRes.setText("");
+            ftxtCelular.setText("");
+            txtEndereco.setText("");
+            txtNumero.setText("");
+            txtBairro.setText("");
+            txtMunicipio.setText("");
+            ftxtCEP.setText("");
+            txtEmail.setText("");
+            txtFormacao.setText("");
+            txtAreaAtuacao.setText("");
+            btnProcurar.setEnabled(true);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(false);
+            ftxtCPF.requestFocus();
+            ftxtCPF.setEnabled(true);
+            txtNome.setEnabled(false);
+            ftxtDataNascimento.setEnabled(false);
+            ftxtRG.setEnabled(false);
+            cbxSexo.setEnabled(false);
+            cbxEstadoCivil.setEnabled(false);
+            ftxtTelRes.setEnabled(false);
+            ftxtCelular.setEnabled(false);
+            txtEndereco.setEnabled(false);
+            txtNumero.setEnabled(false);
+            txtBairro.setEnabled(false);
+            txtMunicipio.setEnabled(false);
+            ftxtCEP.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtFormacao.setEnabled(false);
+            txtAreaAtuacao.setEnabled(false);
+
+            JOptionPane.showMessageDialog(null, "Atualizado com Sucesso");
+        }
+        btnProcurar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments

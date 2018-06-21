@@ -60,23 +60,23 @@ public class DaoInstrutor {
                     + ",ENDERECO = ? , NUMERO = ? ,BAIRRO = ? ,CIDADE = ? ,ESTADO = ? "
                     + ",CEP = ? ,EMAIL = ? ,FORMACAO = ? ,AREAATUACAO = ? WHERE CPF = ?");
 
-            ps.setString(2, instrutor.getNome());
-            ps.setString(3, instrutor.getDataNasc());
-            ps.setString(4, instrutor.getRg());
-            ps.setString(5, instrutor.getSexo());
-            ps.setString(6, instrutor.getEstadoCivil());
-            ps.setString(7, instrutor.getTelefone());
-            ps.setString(8, instrutor.getCelular());
-            ps.setString(9, instrutor.getEndereco());
-            ps.setInt(10, instrutor.getNumero());
-            ps.setString(11, instrutor.getBairro());
-            ps.setString(12, instrutor.getCidade());
-            ps.setString(13, instrutor.getEstado());
-            ps.setString(14, instrutor.getCep());
-            ps.setString(15, instrutor.getEmail());
-            ps.setString(16, instrutor.getFormacao());
-            ps.setString(17, instrutor.getAreaAtuacao());
-            ps.setString(1, instrutor.getCpf());
+            ps.setString(1, instrutor.getNome());
+            ps.setString(2, instrutor.getDataNasc());
+            ps.setString(3, instrutor.getRg());
+            ps.setString(4, instrutor.getSexo());
+            ps.setString(5, instrutor.getEstadoCivil());
+            ps.setString(6, instrutor.getTelefone());
+            ps.setString(7, instrutor.getCelular());
+            ps.setString(8, instrutor.getEndereco());
+            ps.setInt(9, instrutor.getNumero());
+            ps.setString(10, instrutor.getBairro());
+            ps.setString(11, instrutor.getCidade());
+            ps.setString(12, instrutor.getEstado());
+            ps.setString(13, instrutor.getCep());
+            ps.setString(14, instrutor.getEmail());
+            ps.setString(15, instrutor.getFormacao());
+            ps.setString(16, instrutor.getAreaAtuacao());
+            ps.setString(17, instrutor.getCpf());
 
             ps.execute();
         } catch (SQLException ex) {
@@ -124,6 +124,16 @@ public class DaoInstrutor {
     }
 
     public void excluir(Instrutor instrutor) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("DELETE FROM TBINSTRUTOR where WHERE CPF = ?");
+
+            ps.setString(1, instrutor.getCpf());
+
+            ps.execute();
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
 
     }
 }

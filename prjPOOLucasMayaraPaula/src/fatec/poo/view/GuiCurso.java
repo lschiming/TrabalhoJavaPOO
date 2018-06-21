@@ -350,7 +350,11 @@ public class GuiCurso extends javax.swing.JFrame {
             txtValCurso.setText("");
             txtValHorInst.setText("");
             ftxtDtVigencia.setText("");
-
+            btnConsultar.setEnabled(true);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(false);
+            txtSiglaCurso.requestFocus();
+            
             txtSiglaCurso.setEnabled(true);
             txtNomeCurso.setEnabled(false);
             txtProgCurso.setEnabled(false);
@@ -358,7 +362,7 @@ public class GuiCurso extends javax.swing.JFrame {
             txtValCurso.setEnabled(false);
             txtValHorInst.setEnabled(false);
             ftxtDtVigencia.setEnabled(false);
-            txtSiglaCurso.requestFocus();
+            
         }
             btnConsultar.setEnabled(true);
             btnInserir.setEnabled(false);

@@ -442,7 +442,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         conexao = new Conexao("poo", "trabalhopoo");
         conexao.setDriver("oracle.jdbc.driver.OracleDriver");
@@ -466,25 +466,8 @@ public class GuiInstrutor extends javax.swing.JFrame {
         String cpf = ftxtCPF.getText().replaceAll("[.-]", "");
         System.out.println(helper.isCpfValid(cpf));
         if (helper.isCpfValid(cpf)) {
-            txtNome.setEnabled(true);
-            ftxtDataNascimento.setEnabled(true);
-            ftxtRG.setEnabled(true);
-            cbxSexo.setEnabled(true);
-            cbxEstadoCivil.setEnabled(true);
-            ftxtTelRes.setEnabled(true);
-            ftxtCelular.setEnabled(true);
-            txtEndereco.setEnabled(true);
-            txtNumero.setEnabled(true);
-            txtBairro.setEnabled(true);
-            txtMunicipio.setEnabled(true);
-            cbxEstado.setEnabled(true);
-            ftxtCEP.setEnabled(true);
-            txtEmail.setEnabled(true);
-            txtFormacao.setEnabled(true);
-            txtAreaAtuacao.setEnabled(true);
-
+            setCamposEnabled();
             Instrutor instrutor = daoInstrutor.consultar(cpf);
-
             if (instrutor != null) {
                 txtNome.setText(instrutor.getNome());
                 ftxtDataNascimento.setText(instrutor.getDataNasc());
@@ -502,14 +485,25 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 txtEmail.setText(instrutor.getEmail());
                 txtFormacao.setText(instrutor.getFormacao());
                 txtAreaAtuacao.setText(instrutor.getAreaAtuacao());
+                
+                btnProcurar.setEnabled(false);
                 btnAlterar.setEnabled(true);
                 btnExcluir.setEnabled(true);
+                ftxtCPF.setEnabled(false);
+                setCamposEnabled();
+                txtNome.requestFocus();
             } else {
                 btnInserir.setEnabled(true);
+                btnProcurar.setEnabled(false);
+                txtNome.requestFocus();
+                ftxtCPF.setEnabled(false);
+                setCamposEnabled();
             }
         } else {
             JOptionPane.showMessageDialog(null, "CPF Invalido");
+            ftxtCPF.setEnabled(true);
             ftxtCPF.requestFocus();
+            ftxtCPF.setText("");
 
         }
     }//GEN-LAST:event_btnProcurarActionPerformed
@@ -539,39 +533,16 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
         daoInstrutor.inserir(instrutor);
 
-        txtNome.setText("");
-        ftxtDataNascimento.setText("");
-        ftxtRG.setText("");
-        ftxtTelRes.setText("");
-        ftxtCelular.setText("");
-        txtEndereco.setText("");
-        txtNumero.setText("");
-        txtBairro.setText("");
-        txtMunicipio.setText("");
-        ftxtCEP.setText("");
-        txtEmail.setText("");
-        txtFormacao.setText("");
-        txtAreaAtuacao.setText("");
+        limpaCampos();
+                        
         btnProcurar.setEnabled(true);
         btnInserir.setEnabled(false);
         btnAlterar.setEnabled(false);
         ftxtCPF.requestFocus();
         ftxtCPF.setEnabled(true);
         txtNome.setEnabled(false);
-        ftxtDataNascimento.setEnabled(false);
-        ftxtRG.setEnabled(false);
-        cbxSexo.setEnabled(false);
-        cbxEstadoCivil.setEnabled(false);
-        ftxtTelRes.setEnabled(false);
-        ftxtCelular.setEnabled(false);
-        txtEndereco.setEnabled(false);
-        txtNumero.setEnabled(false);
-        txtBairro.setEnabled(false);
-        txtMunicipio.setEnabled(false);
-        ftxtCEP.setEnabled(false);
-        txtEmail.setEnabled(false);
-        txtFormacao.setEnabled(false);
-        txtAreaAtuacao.setEnabled(false);
+        setCamposDisabled();
+        
 
         JOptionPane.showMessageDialog(null, "Instrutor Inserido");
 
@@ -603,45 +574,16 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
             daoInstrutor.alterar(instrutor);
 
-            txtNome.setText("");
-            ftxtDataNascimento.setText("");
-            ftxtRG.setText("");
-            ftxtTelRes.setText("");
-            ftxtCelular.setText("");
-            txtEndereco.setText("");
-            txtNumero.setText("");
-            txtBairro.setText("");
-            txtMunicipio.setText("");
-            ftxtCEP.setText("");
-            txtEmail.setText("");
-            txtFormacao.setText("");
-            txtAreaAtuacao.setText("");
-            btnProcurar.setEnabled(true);
-            btnInserir.setEnabled(false);
-            btnAlterar.setEnabled(false);
-            ftxtCPF.requestFocus();
-            ftxtCPF.setEnabled(true);
-            txtNome.setEnabled(false);
-            ftxtDataNascimento.setEnabled(false);
-            ftxtRG.setEnabled(false);
-            cbxSexo.setEnabled(false);
-            cbxEstadoCivil.setEnabled(false);
-            ftxtTelRes.setEnabled(false);
-            ftxtCelular.setEnabled(false);
-            txtEndereco.setEnabled(false);
-            txtNumero.setEnabled(false);
-            txtBairro.setEnabled(false);
-            txtMunicipio.setEnabled(false);
-            ftxtCEP.setEnabled(false);
-            txtEmail.setEnabled(false);
-            txtFormacao.setEnabled(false);
-            txtAreaAtuacao.setEnabled(false);
-
-            JOptionPane.showMessageDialog(null, "Atualizado com Sucesso");
+                        JOptionPane.showMessageDialog(null, "Atualizado com Sucesso");
         }
+        limpaCampos();
         btnProcurar.setEnabled(true);
         btnInserir.setEnabled(false);
         btnAlterar.setEnabled(false);
+        ftxtCPF.requestFocus();
+        ftxtCPF.setEnabled(true);
+        setCamposDisabled();
+        ftxtCPF.setText("");
         btnExcluir.setEnabled(false);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
@@ -649,10 +591,65 @@ public class GuiInstrutor extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0) {
             instrutor = new Instrutor(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
             daoInstrutor.excluir(instrutor);
+            limpaCampos();
+            setCamposDisabled();
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+            ftxtCPF.setEnabled(true);
+            ftxtCPF.requestFocus();
+            ftxtCPF.setText("");
 
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
-
+    private void setCamposDisabled (){
+        ftxtDataNascimento.setEnabled(false);
+        ftxtRG.setEnabled(false);
+        cbxSexo.setEnabled(false);
+        cbxEstadoCivil.setEnabled(false);
+        ftxtTelRes.setEnabled(false);
+        ftxtCelular.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtNumero.setEnabled(false);
+        txtBairro.setEnabled(false);
+        txtMunicipio.setEnabled(false);
+        ftxtCEP.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtFormacao.setEnabled(false);
+        txtAreaAtuacao.setEnabled(false);
+    }
+    private void limpaCampos(){
+        txtNome.setText("");
+        ftxtDataNascimento.setText("");
+        ftxtRG.setText("");
+        ftxtTelRes.setText("");
+        ftxtCelular.setText("");
+        txtEndereco.setText("");
+        txtNumero.setText("");
+        txtBairro.setText("");
+        txtMunicipio.setText("");
+        ftxtCEP.setText("");
+        txtEmail.setText("");
+        txtFormacao.setText("");
+        txtAreaAtuacao.setText("");
+    }
+    private void setCamposEnabled() {
+        txtNome.setEnabled(true);
+        ftxtDataNascimento.setEnabled(true);
+        ftxtRG.setEnabled(true);
+        cbxSexo.setEnabled(true);
+        cbxEstadoCivil.setEnabled(true);
+        ftxtTelRes.setEnabled(true);
+        ftxtCelular.setEnabled(true);
+        txtEndereco.setEnabled(true);
+        txtNumero.setEnabled(true);
+        txtBairro.setEnabled(true);
+        txtMunicipio.setEnabled(true);
+        cbxEstado.setEnabled(true);
+        ftxtCEP.setEnabled(true);
+        txtEmail.setEnabled(true);
+        txtFormacao.setEnabled(true);
+        txtAreaAtuacao.setEnabled(true);
+    }
     private void ftxtDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtDataNascimentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ftxtDataNascimentoActionPerformed

@@ -350,9 +350,6 @@ public class GuiCurso extends javax.swing.JFrame {
             txtValCurso.setText("");
             txtValHorInst.setText("");
             ftxtDtVigencia.setText("");
-            btnConsultar.setEnabled(true);
-            btnInserir.setEnabled(false);
-            btnAlterar.setEnabled(false);
             txtSiglaCurso.requestFocus();
             
             txtSiglaCurso.setEnabled(true);

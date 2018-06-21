@@ -46,16 +46,15 @@ public class DaoCurso {
     public void alterar(Curso curso) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("UPDATE tbcurso set nome = ?, datavigencia = ?, programa = ?,"
-                    + "cargahoraria = ?, valor = ?, valorhorainst = ?"
-                    + "where sigla = ?");
+            ps = conn.prepareStatement("UPDATE tbcurso set nome = ?, cargahoraria = ?, valor = ?"
+                    + "datavigencia = ?, valorhorainst = ?, programa = ? where sigla = ?");
 
             ps.setString(1, curso.getNome());
-            ps.setString(2, curso.getDataVigencia());
-            ps.setString(3, curso.getPrograma());
-            ps.setInt(4, (Integer.valueOf(curso.getCargaHoraria())));
-            ps.setDouble(5, curso.getValor());
-            ps.setDouble(6, curso.getValorHoraInstrutor());
+            ps.setInt(2, curso.getCargaHoraria());
+            ps.setDouble(3, curso.getValor());
+            ps.setString(4, curso.getDataVigencia());
+            ps.setDouble(5, curso.getValorHoraInstrutor());
+            ps.setString(6, curso.getPrograma());
 
             ps.execute();
         } catch (SQLException ex) {
@@ -68,19 +67,21 @@ public class DaoCurso {
 
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("SELECT * from tbcurso where"
+            ps = conn.prepareStatement("SELECT * from tbCurso where"
                     + " sigla = ?");
 
             ps.setString(1, sigla);
             ResultSet rs = ps.executeQuery();
-            
-            if(rs.next() == true){
+
+            if (rs.next() == true) {
                 cs = new Curso(sigla, rs.getString("nome"));
-                cs.setPrograma(String.valueOf(rs.getString("programa")));
-                cs.setDataVigencia(String.valueOf(rs.getString("datavigencia")));
-                cs.setCargaHoraria(Integer.valueOf(("cargahoraria")));
-                cs.setValor(Double.valueOf("valor"));
-                cs.setValorHoraInstrutor(Double.valueOf("valorhorainst"));
+
+                cs.setCargaHoraria(rs.getInt("cargahoraria"));
+                cs.setValor(rs.getDouble("valor"));
+                cs.setDataVigencia(rs.getString("datavigencia"));
+                cs.setValorHoraInstrutor(rs.getDouble("valorhorainst"));
+                cs.setPrograma(rs.getString("programa"));
+
             }
 
         } catch (SQLException ex) {

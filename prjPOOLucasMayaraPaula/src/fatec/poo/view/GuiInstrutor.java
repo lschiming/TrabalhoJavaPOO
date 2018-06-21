@@ -148,6 +148,11 @@ public class GuiInstrutor extends javax.swing.JFrame {
         btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/add.png"))); // NOI18N
         btnInserir.setText("Inserir");
         btnInserir.setEnabled(false);
+        btnInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserirActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
@@ -186,7 +191,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         }
         ftxtDataNascimento.setEnabled(false);
 
-        cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteira(o)", "Casada(o)", "Viuva(o)" }));
+        cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteiro", "Casado", "Viuvo" }));
         cbxEstadoCivil.setEnabled(false);
 
         txtNumero.setEnabled(false);
@@ -199,11 +204,16 @@ public class GuiInstrutor extends javax.swing.JFrame {
         ftxtCEP.setEnabled(false);
 
         try {
-            ftxtTelRes.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+            ftxtTelRes.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         ftxtTelRes.setEnabled(false);
+        ftxtTelRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtTelResActionPerformed(evt);
+            }
+        });
 
         try {
             ftxtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -483,6 +493,56 @@ public class GuiInstrutor extends javax.swing.JFrame {
     private void cbxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSexoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxSexoActionPerformed
+
+    private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
+        instrutor = new Instrutor(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
+        
+        instrutor.setDataNasc(ftxtDataNascimento.getText());
+        instrutor.setRg(ftxtRG.getText().replaceAll("[.-]", ""));
+        instrutor.setSexo(cbxSexo.getSelectedItem().toString());
+        instrutor.setEstadoCivil(cbxEstadoCivil.getSelectedItem().toString());
+        instrutor.setTelefone(ftxtTelRes.getText().replaceAll("[()-]", ""));;
+        instrutor.setCelular(ftxtCelular.getText().replaceAll("[()-]", ""));
+        instrutor.setEndereco(txtEndereco.getText());
+        instrutor.setNumero(Integer.parseInt(txtNumero.getText()));
+        instrutor.setBairro(txtBairro.getText());;
+        instrutor.setCidade(txtMunicipio.getText());
+        instrutor.setEstado(cbxEstado.getSelectedItem().toString());
+        instrutor.setCep(ftxtCEP.getText().replaceAll("[-]", ""));
+        instrutor.setEmail(txtEmail.getText());
+        instrutor.setFormacao(txtFormacao.getText());
+        instrutor.setAreaAtuacao(txtAreaAtuacao.getText());
+        
+        daoInstrutor.inserir(instrutor);
+                
+        txtNome.setText("");  
+        ftxtDataNascimento.setText("");
+        ftxtRG.setText("");
+        cbxSexo.setEnabled(true);
+        cbxEstadoCivil.setEnabled(true);
+        ftxtTelRes.setText("");
+        ftxtCelular.setText("");
+        txtEndereco.setText("");
+        txtNumero.setText("");
+        txtBairro.setText("");
+        txtMunicipio.setText("");
+        ftxtCEP.setText("");
+        txtEmail.setText("");
+        txtFormacao.setText("");
+        txtAreaAtuacao.setText("");
+                
+        btnInserir.setEnabled(false);
+        ftxtCPF.setEnabled(true);
+        txtNome.setEnabled(false);
+        ftxtCPF.requestFocus();
+        
+        btnProcurar.setEnabled(true);
+        btnInserir.setEnabled(false);
+    }//GEN-LAST:event_btnInserirActionPerformed
+
+    private void ftxtTelResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtTelResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtTelResActionPerformed
 
     /**
      * @param args the command line arguments

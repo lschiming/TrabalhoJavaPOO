@@ -601,6 +601,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
+    
     private void setCamposDisabled (){
         ftxtDataNascimento.setEnabled(false);
         ftxtRG.setEnabled(false);
@@ -617,6 +618,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         txtFormacao.setEnabled(false);
         txtAreaAtuacao.setEnabled(false);
     }
+    
     private void limpaCampos(){
         txtNome.setText("");
         ftxtDataNascimento.setText("");
@@ -632,6 +634,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         txtFormacao.setText("");
         txtAreaAtuacao.setText("");
     }
+    
     private void setCamposEnabled() {
         txtNome.setEnabled(true);
         ftxtDataNascimento.setEnabled(true);

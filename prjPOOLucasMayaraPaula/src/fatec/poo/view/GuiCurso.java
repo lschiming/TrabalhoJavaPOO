@@ -305,7 +305,13 @@ public class GuiCurso extends javax.swing.JFrame {
             btnExcluir.setEnabled(false);
         } else {
             txtNomeCurso.setText(curso.getNome());
-
+            txtNomeCurso.setText(curso.getNome());
+            txtCargaHoraria.setText(Integer.toString(curso.getCargaHoraria()));
+            txtValCurso.setText(Double.toString(curso.getValor()));
+            ftxtDtVigencia.setText(curso.getDataVigencia());
+            txtValHorInst.setText(Double.toString(curso.getValorHoraInstrutor()));
+            txtProgCurso.setText(curso.getPrograma());
+            
             txtSiglaCurso.setEnabled(false);
             txtNomeCurso.setEnabled(true);
             txtProgCurso.setEnabled(true);
@@ -328,32 +334,36 @@ public class GuiCurso extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Confirma Alteração") == 0) {
             curso = new Curso(txtSiglaCurso.getText(), txtNomeCurso.getText());
             curso.setNome(txtNomeCurso.getText());
-            
+            curso.setCargaHoraria(Integer.parseInt(txtCargaHoraria.getText()));
+            curso.setValor(Double.parseDouble(txtValCurso.getText()));
+            curso.setDataVigencia(ftxtDtVigencia.getText());
+            curso.setValorHoraInstrutor(Double.parseDouble(txtValHorInst.getText()));
+            curso.setPrograma(txtProgCurso.getText());
 
             daoCurso.alterar(curso);
+        
+
+            txtSiglaCurso.setText("");
+            txtNomeCurso.setText("");
+            txtProgCurso.setText("");
+            txtCargaHoraria.setText("");
+            txtValCurso.setText("");
+            txtValHorInst.setText("");
+            ftxtDtVigencia.setText("");
+
+            txtSiglaCurso.setEnabled(true);
+            txtNomeCurso.setEnabled(false);
+            txtProgCurso.setEnabled(false);
+            txtCargaHoraria.setEnabled(false);
+            txtValCurso.setEnabled(false);
+            txtValHorInst.setEnabled(false);
+            ftxtDtVigencia.setEnabled(false);
+            txtSiglaCurso.requestFocus();
         }
-
-        txtSiglaCurso.setText("");
-        txtNomeCurso.setText("");
-        txtProgCurso.setText("");
-        txtCargaHoraria.setText("");
-        txtValCurso.setText("");
-        txtValHorInst.setText("");
-        ftxtDtVigencia.setText("");
-
-        txtSiglaCurso.setEnabled(true);
-        txtNomeCurso.setEnabled(false);
-        txtProgCurso.setEnabled(false);
-        txtCargaHoraria.setEnabled(false);
-        txtValCurso.setEnabled(false);
-        txtValHorInst.setEnabled(false);
-        ftxtDtVigencia.setEnabled(false);
-        txtSiglaCurso.requestFocus();
-
-        btnConsultar.setEnabled(true);
-        btnInserir.setEnabled(false);
-        btnAlterar.setEnabled(false);
-        btnExcluir.setEnabled(false);
+            btnConsultar.setEnabled(true);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed

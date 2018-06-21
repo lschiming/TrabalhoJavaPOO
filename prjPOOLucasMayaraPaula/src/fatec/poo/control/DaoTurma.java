@@ -19,6 +19,7 @@ import java.sql.SQLException;
 public class DaoTurma {
     
     private Connection conn;
+    private Conexao conexao = new Conexao("poo","trabalhopoo");
     
     public DaoTurma(Connection conn) {
         this.conn = conn;
@@ -28,8 +29,8 @@ public class DaoTurma {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("INSERT INTO tbturma (siglaturma,siglacurso,descricao,"
-                                     + "datainicio,datatermino,periodo,qtdvagas,observacoes)"
-                                     + "VALUES (?,?,?,?,?,?,?,?)");
+                                     + "datainicio,datatermino,periodo,qtdvagas)"
+                                     + "VALUES (?,?,?,?,?,?,?)");
             ps.setString(1, turma.getSiglaTurma());
             ps.setString(2, sc);
             ps.setString(3, turma.getDescricao());
@@ -37,7 +38,7 @@ public class DaoTurma {
             ps.setString(5, turma.getDataTermino());
             ps.setString(6, turma.getPeriodo());
             ps.setInt   (7, turma.getQtdVagas());
-            ps.setString(8, turma.getObservacoes());
+//            ps.setString(8, turma.getObservacoes());
             
             ps.execute();
         } catch (SQLException ex) {
@@ -65,10 +66,8 @@ public class DaoTurma {
         }
     }
     
-    public Turma consultar(String sigla) {
+    public Turma consultar(String sigla, Curso curso) {
         Turma turma = null;
-        Curso curso = null;
-        DaoCurso dc = null;
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("SELECT * FROM tbturma WHERE siglaturma = ?");
@@ -76,19 +75,19 @@ public class DaoTurma {
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
-                curso = dc.consultar(rs.getString("siglacurso"));
-                turma = new Turma(sigla,rs.getString("descricao"));
-                turma.setCurso(curso);
+                turma = new Turma(rs.getString("siglaturma"),rs.getString("descricao"));
+//                turma.setCurso(curso);
                 turma.setDataInicio(rs.getString("datainicio"));
                 turma.setDataTermino(rs.getString("datatermino"));
                 turma.setPeriodo(rs.getString("periodo"));
                 turma.setQtdVagas(rs.getInt("qtdvagas"));
                 turma.setObservacoes(rs.getString("observacoes"));
-            }            
-            
+                curso.addTurma(turma);
+            }
+        
         } catch (SQLException ex) {
             System.out.println(ex.toString());
-        }        
+        }
         
         return turma;
     }

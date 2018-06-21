@@ -80,5 +80,5 @@ CREATE TABLE tbturma (
   qtdvagas      NUMBER        NOT NULL,
   observacoes   VARCHAR2(500),
   CONSTRAINT pk_turma PRIMARY KEY (siglaturma),
-  CONSTRAINT siglacurso FOREIGN KEY (siglaturma) REFERENCES tbcurso (sigla)
+  CONSTRAINT fk_siglacurso FOREIGN KEY (siglacurso) REFERENCES tbcurso (sigla)
 );

@@ -251,7 +251,9 @@ public class GuiTurma extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         turma = null;
-        turma = daoTurma.consultar(txtSiglaTurma.getText());
+        curso = daoCurso.consultar(String.valueOf(cbxCurso.getSelectedItem()));
+        turma = daoTurma.consultar(txtSiglaTurma.getText(),curso);
+//        curso.addTurma(turma);
         
         if (turma == null) {
             txtSiglaTurma.setEnabled(false);
@@ -268,6 +270,14 @@ public class GuiTurma extends javax.swing.JFrame {
             btnExcluir.setEnabled(false);
             
         } else {
+            txtSiglaTurma.setText(turma.getSiglaTurma());
+            txtNome.setText(turma.getDescricao());
+            txtQtdeVagas.setText(Integer.toString(turma.getQtdVagas()));
+            ftxtDataInicio.setText(turma.getDataInicio());
+            ftxtDataTermino.setText(turma.getDataTermino());
+            cbxPeriodo.setSelectedItem(turma.getPeriodo());
+            cbxCurso.setSelectedItem(turma.getCurso().getSigla());
+            
             cbxCurso.setEnabled(false);
             txtSiglaTurma.setEnabled(false);
             txtNome.setEnabled(true);
@@ -287,6 +297,7 @@ public class GuiTurma extends javax.swing.JFrame {
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
         String sc = String.valueOf(cbxCurso.getSelectedItem());
+        System.out.println(sc);
         turma = new Turma(txtSiglaTurma.getText(),txtNome.getText()); //txtNome = Descricao
         turma.setDataInicio(ftxtDataInicio.getText().replace("/", ""));
         turma.setDataTermino(ftxtDataTermino.getText().replace("/", ""));
@@ -360,7 +371,7 @@ public class GuiTurma extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {
             daoTurma.excluir(turma);
             
-                    cbxCurso.setSelectedIndex(0);
+        cbxCurso.setSelectedIndex(0);
         txtSiglaTurma.setText("");
         txtNome.setText("");
         ftxtDataInicio.setText("");

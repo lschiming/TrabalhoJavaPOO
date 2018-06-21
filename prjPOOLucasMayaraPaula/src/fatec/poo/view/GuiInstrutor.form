@@ -29,8 +29,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
                       <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="ftxtCPF" min="-2" pref="95" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="ftxtCPF" min="-2" pref="124" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
@@ -41,26 +41,6 @@
                       <Component id="lblDtNascimento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="ftxtDataNascimento" min="-2" pref="90" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
-                      <Component id="lblSexo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="cbxSexo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="165" pref="165" max="-2" attributes="0"/>
-                      <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="cbxEstadoCivil" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
-                      <Component id="lblEndereco" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="txtEndereco" min="-2" pref="200" max="-2" attributes="0"/>
-                      <EmptySpace min="87" pref="87" max="-2" attributes="0"/>
-                      <Component id="lblNum" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="txtNumero" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
@@ -79,9 +59,9 @@
                       <Component id="txtMunicipio" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="cbxEstado" min="-2" pref="47" max="-2" attributes="0"/>
-                      <EmptySpace min="56" pref="56" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="cbxEstado" min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="lblTelRes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="ftxtTelRes" min="-2" pref="90" max="-2" attributes="0"/>
@@ -124,6 +104,31 @@
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="btnSair" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
+                              <Component id="lblEndereco" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                              <Component id="txtEndereco" min="-2" pref="200" max="-2" attributes="0"/>
+                              <EmptySpace min="87" pref="87" max="-2" attributes="0"/>
+                              <Component id="lblNum" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
+                              <Component id="lblSexo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                              <Component id="cbxSexo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="165" pref="165" max="-2" attributes="0"/>
+                              <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtNumero" pref="90" max="32767" attributes="0"/>
+                          <Component id="cbxEstadoCivil" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
@@ -155,12 +160,14 @@
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="cbxSexo" min="-2" max="-2" attributes="0"/>
-                  <Component id="cbxEstadoCivil" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblSexo" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -347,15 +354,16 @@
     <Component class="javax.swing.JComboBox" name="cbxSexo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Feminino"/>
-            <StringItem index="1" value="Masculino"/>
-            <StringItem index="2" value="Nao Binario"/>
-            <StringItem index="3" value="Outro"/>
+          <StringArray count="2">
+            <StringItem index="0" value="F"/>
+            <StringItem index="1" value="M"/>
           </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxSexoActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -455,13 +463,10 @@
     <Component class="javax.swing.JComboBox" name="cbxEstadoCivil">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
-            <StringItem index="0" value="Solteira"/>
-            <StringItem index="1" value="Casada"/>
-            <StringItem index="2" value="Uni&#xe3;o Est&#xe1;vel"/>
-            <StringItem index="3" value="Viuva"/>
-            <StringItem index="4" value="Divorciada"/>
-            <StringItem index="5" value="Outro"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Solteira(o)"/>
+            <StringItem index="1" value="Casada(o)"/>
+            <StringItem index="2" value="Viuva(o)"/>
           </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>

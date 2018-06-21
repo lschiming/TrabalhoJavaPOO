@@ -4,6 +4,7 @@ import fatec.poo.control.Conexao;
 import fatec.poo.control.DaoCurso;
 import fatec.poo.control.DaoInstrutor;
 import fatec.poo.model.Instrutor;
+import fatec.poo.control.Helper;
 
 /**
  *
@@ -14,7 +15,8 @@ public class GuiInstrutor extends javax.swing.JFrame {
     private DaoInstrutor daoInstrutor = null;
     private Instrutor instrutor = null;
     private Conexao conexao = null;
-    
+    private Helper helper = new Helper();
+
     public GuiInstrutor() {
         initComponents();
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -127,8 +129,13 @@ public class GuiInstrutor extends javax.swing.JFrame {
         }
         ftxtRG.setEnabled(false);
 
-        cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Feminino", "Masculino", "Nao Binario", "Outro" }));
+        cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M" }));
         cbxSexo.setEnabled(false);
+        cbxSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxSexoActionPerformed(evt);
+            }
+        });
 
         btnProcurar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/pesq.png"))); // NOI18N
         btnProcurar.setText("Procurar");
@@ -179,7 +186,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         }
         ftxtDataNascimento.setEnabled(false);
 
-        cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteira", "Casada", "União Estável", "Viuva", "Divorciada", "Outro" }));
+        cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solteira(o)", "Casada(o)", "Viuva(o)" }));
         cbxEstadoCivil.setEnabled(false);
 
         txtNumero.setEnabled(false);
@@ -222,7 +229,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addComponent(lblCPF)
                         .addGap(10, 10, 10)
-                        .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(lblNome)
@@ -232,24 +239,6 @@ public class GuiInstrutor extends javax.swing.JFrame {
                         .addComponent(lblDtNascimento)
                         .addGap(10, 10, 10)
                         .addComponent(ftxtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(lblSexo)
-                        .addGap(10, 10, 10)
-                        .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(165, 165, 165)
-                        .addComponent(lblEstadoCivil)
-                        .addGap(10, 10, 10)
-                        .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(lblEndereco)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87)
-                        .addComponent(lblNum)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(lblBairro)
@@ -267,8 +256,8 @@ public class GuiInstrutor extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(lblEstado)
                         .addGap(10, 10, 10)
-                        .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
+                        .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
                         .addComponent(lblTelRes)
                         .addGap(10, 10, 10)
                         .addComponent(ftxtTelRes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -305,7 +294,27 @@ public class GuiInstrutor extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(lblEndereco)
+                                .addGap(10, 10, 10)
+                                .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(87, 87, 87)
+                                .addComponent(lblNum))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(lblSexo)
+                                .addGap(10, 10, 10)
+                                .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(165, 165, 165)
+                                .addComponent(lblEstadoCivil)))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(cbxEstadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
@@ -329,12 +338,13 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSexo)
-                            .addComponent(lblEstadoCivil))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblEstadoCivil)
+                                .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -404,9 +414,9 @@ public class GuiInstrutor extends javax.swing.JFrame {
     private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBairroActionPerformed
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
-        conexao = new Conexao("SYSTEM","21042531");
-        conexao.setDriver("oracle.jdbc.driver.OracleDivrer");
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
+        conexao = new Conexao("poo", "trabalhopoo");
+        conexao.setDriver("oracle.jdbc.driver.OracleDriver");
         conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
         daoInstrutor = new DaoInstrutor(conexao.conectar());
     }
@@ -419,13 +429,43 @@ public class GuiInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMunicipioActionPerformed
 
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
-        //validar cpf
+        String cpf = ftxtCPF.getText().replaceAll("[.-]", "");
+        System.out.println(helper.isCpfValid(cpf));
+        if (helper.isCpfValid(cpf)) {
+            Instrutor instrutor = daoInstrutor.consultar(cpf);
+            if (instrutor != null) {
+                
+                txtNome.setText(instrutor.getNome());
+                ftxtDataNascimento.setText(instrutor.getDataNasc());
+                ftxtRG.setText(instrutor.getRg());
+                cbxSexo.setSelectedItem(instrutor.getSexo());
+                cbxEstadoCivil.setSelectedItem(instrutor.getEstadoCivil());
+                ftxtTelRes.setText(instrutor.getTelefone());
+                ftxtCelular.setText(instrutor.getCelular());
+                txtEndereco.setText(instrutor.getEndereco());
+                txtNumero.setText(Integer.toString(instrutor.getNumero()));
+                txtBairro.setText(instrutor.getBairro());
+                txtMunicipio.setText(instrutor.getCidade());
+                cbxEstado.setSelectedItem(instrutor.getEstado());
+                ftxtCEP.setText(instrutor.getCep());
+                txtEmail.setText(instrutor.getEmail());
+                txtFormacao.setText(instrutor.getFormacao());
+                txtAreaAtuacao.setText(instrutor.getAreaAtuacao());
+                
+                System.out.println(instrutor.getEstado());
+            }
+        }
 
-        // se valido
-        // buscar dados no banco
-        // return
-        // mensagem de erro
+        //se cpf invalido (false) erro
+        // se cpf valido buscar
+        // se nao tem, habilitar botoes
+        //se tem exibir e habilitar botoes
+
     }//GEN-LAST:event_btnProcurarActionPerformed
+
+    private void cbxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxSexoActionPerformed
 
     /**
      * @param args the command line arguments

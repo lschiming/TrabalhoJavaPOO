@@ -1,4 +1,4 @@
-package fatec.poo.view;
+package fatec.poo.control;
 
 /**
  *

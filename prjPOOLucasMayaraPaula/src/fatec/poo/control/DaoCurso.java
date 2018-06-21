@@ -55,6 +55,7 @@ public class DaoCurso {
             ps.setString(4, curso.getDataVigencia());
             ps.setDouble(5, curso.getValorHoraInstrutor());
             ps.setString(6, curso.getPrograma());
+            ps.setString(7, curso.getSigla());
 
             ps.execute();
         } catch (SQLException ex) {

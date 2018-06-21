@@ -48,7 +48,7 @@ public class DaoTurma {
     public void alterar(Turma turma) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("ALTER TABLE tbturma SET descricao = ?, datainicio = ?, "
+            ps = conn.prepareStatement("UPDATE tbturma SET descricao = ?, datainicio = ?, "
                                      + "datatermino = ?, periodo = ?, qtdvagas = ?, observacoes = ? "
                                      + "WHERE siglaturma = ?");
             ps.setString(1, turma.getDescricao());

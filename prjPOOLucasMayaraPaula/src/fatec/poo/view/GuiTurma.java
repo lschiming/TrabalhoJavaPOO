@@ -275,7 +275,6 @@ public class GuiTurma extends javax.swing.JFrame {
     private javax.swing.JTextField txtSiglaTurma;
     // End of variables declaration//GEN-END:variables
     private DaoCurso daoCurso = null;
-    private DaoTurma daoTurma = null;
     private Conexao conexao = null;
     
 }

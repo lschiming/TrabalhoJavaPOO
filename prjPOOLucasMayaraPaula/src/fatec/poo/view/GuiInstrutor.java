@@ -1,10 +1,10 @@
 package fatec.poo.view;
 
 import fatec.poo.control.Conexao;
-import fatec.poo.control.DaoCurso;
 import fatec.poo.control.DaoInstrutor;
 import fatec.poo.model.Instrutor;
 import fatec.poo.control.Helper;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -432,9 +432,26 @@ public class GuiInstrutor extends javax.swing.JFrame {
         String cpf = ftxtCPF.getText().replaceAll("[.-]", "");
         System.out.println(helper.isCpfValid(cpf));
         if (helper.isCpfValid(cpf)) {
+            txtNome.setEnabled(true);
+            ftxtDataNascimento.setEnabled(true);
+            ftxtRG.setEnabled(true);
+            cbxSexo.setEnabled(true);
+            cbxEstadoCivil.setEnabled(true);
+            ftxtTelRes.setEnabled(true);
+            ftxtCelular.setEnabled(true);
+            txtEndereco.setEnabled(true);
+            txtNumero.setEnabled(true);
+            txtBairro.setEnabled(true);
+            txtMunicipio.setEnabled(true);
+            cbxEstado.setEnabled(true);
+            ftxtCEP.setEnabled(true);
+            txtEmail.setEnabled(true);
+            txtFormacao.setEnabled(true);
+            txtAreaAtuacao.setEnabled(true);
+
             Instrutor instrutor = daoInstrutor.consultar(cpf);
+
             if (instrutor != null) {
-                
                 txtNome.setText(instrutor.getNome());
                 ftxtDataNascimento.setText(instrutor.getDataNasc());
                 ftxtRG.setText(instrutor.getRg());
@@ -451,16 +468,16 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 txtEmail.setText(instrutor.getEmail());
                 txtFormacao.setText(instrutor.getFormacao());
                 txtAreaAtuacao.setText(instrutor.getAreaAtuacao());
-                
-                System.out.println(instrutor.getEstado());
+                btnAlterar.setEnabled(true);
+                btnExcluir.setEnabled(true);
+            } else {
+                btnInserir.setEnabled(true);
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "CPF Invalido");
+            ftxtCPF.requestFocus();
+
         }
-
-        //se cpf invalido (false) erro
-        // se cpf valido buscar
-        // se nao tem, habilitar botoes
-        //se tem exibir e habilitar botoes
-
     }//GEN-LAST:event_btnProcurarActionPerformed
 
     private void cbxSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSexoActionPerformed

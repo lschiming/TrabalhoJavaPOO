@@ -490,6 +490,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 btnAlterar.setEnabled(true);
                 btnExcluir.setEnabled(true);
                 ftxtCPF.setEnabled(false);
+                //ftxtCPF.setText("");
                 setCamposEnabled();
                 txtNome.requestFocus();
             } else {
@@ -497,6 +498,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 btnProcurar.setEnabled(false);
                 txtNome.requestFocus();
                 ftxtCPF.setEnabled(false);
+                ftxtCPF.setText("");
                 setCamposEnabled();
             }
         } else {
@@ -598,13 +600,16 @@ public class GuiInstrutor extends javax.swing.JFrame {
             ftxtCPF.setEnabled(true);
             ftxtCPF.requestFocus();
             ftxtCPF.setText("");
+            btnProcurar.setEnabled(true);
 
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
     private void setCamposDisabled (){
+        txtNome.setEnabled(false);
         ftxtDataNascimento.setEnabled(false);
         ftxtRG.setEnabled(false);
         cbxSexo.setEnabled(false);
+        cbxEstado.setEnabled(false);
         cbxEstadoCivil.setEnabled(false);
         ftxtTelRes.setEnabled(false);
         ftxtCelular.setEnabled(false);

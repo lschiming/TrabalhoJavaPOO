@@ -46,8 +46,8 @@ public class DaoCurso {
     public void alterar(Curso curso) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("UPDATE tbcurso set nome = ?, cargahoraria = ?, valor = ? " 
-                    + " datavigencia = ?, valorhorainst = ?, programa = ? where sigla = ?");
+            ps = conn.prepareStatement("UPDATE tbcurso set nome = ?, cargahoraria = ?, valor = ?, " 
+                    + "datavigencia = ?, valorhorainst = ?, programa = ? where sigla = ?");
 
             ps.setString(1, curso.getNome());
             ps.setInt(2, curso.getCargaHoraria());

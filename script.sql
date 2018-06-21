@@ -66,12 +66,12 @@ CREATE TABLE tbcurso (
   valor         NUMBER  (14,2) NOT NULL,
   datavigencia  VARCHAR2(  10) NOT NULL,
   valorhorainst NUMBER  (14,2) NOT NULL,
-  programa      VARCHAR2(  10) NOT NULL,
+  programa      VARCHAR2(  50) NOT NULL,
   CONSTRAINT pk_curso PRIMARY KEY (sigla)
 );
 
 CREATE TABLE tbturma (
-  siglaturma    VARCHAR2(  5) NOT NULL,
+  siglaturma    VARCHAR2( 15) NOT NULL,
   siglacurso    VARCHAR2(  5) NOT NULL,
   descricao     VARCHAR2(100) NOT NULL,
   datainicio    VARCHAR2( 10) NOT NULL,

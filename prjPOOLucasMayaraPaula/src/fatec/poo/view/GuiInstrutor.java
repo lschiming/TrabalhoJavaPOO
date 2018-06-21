@@ -454,6 +454,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBairroActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        conexao.fecharConexao();
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
@@ -645,7 +646,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {
+        if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0) {
             instrutor = new Instrutor(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
             daoInstrutor.excluir(instrutor);
 

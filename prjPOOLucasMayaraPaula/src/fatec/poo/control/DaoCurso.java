@@ -33,9 +33,9 @@ public class DaoCurso {
             ps.setString(2, curso.getNome());
             ps.setString(3, curso.getDataVigencia());
             ps.setString(4, curso.getPrograma());
-            ps.setInt(5, (Integer.valueOf(curso.getCargaHoraria())));
-            ps.setDouble(6, (Double.valueOf(curso.getValor())));
-            ps.setDouble(7, (Double.valueOf(curso.getValorHoraInstrutor())));
+            ps.setInt(5, curso.getCargaHoraria());
+            ps.setDouble(6, curso.getValor());
+            ps.setDouble(7, curso.getValorHoraInstrutor());
 
             ps.execute();
         } catch (SQLException ex) {
@@ -54,8 +54,8 @@ public class DaoCurso {
             ps.setString(2, curso.getDataVigencia());
             ps.setString(3, curso.getPrograma());
             ps.setInt(4, (Integer.valueOf(curso.getCargaHoraria())));
-            ps.setDouble(5, (Double.valueOf(curso.getValor())));
-            ps.setDouble(6, (Double.valueOf(curso.getValorHoraInstrutor())));
+            ps.setDouble(5, curso.getValor());
+            ps.setDouble(6, curso.getValorHoraInstrutor());
 
             ps.execute();
         } catch (SQLException ex) {

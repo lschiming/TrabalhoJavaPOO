@@ -27,7 +27,7 @@ public class DaoCurso {
     public void inserir(Curso curso) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("INSERT INTO tbcurso(SiglaCurso, nome, datavigencia, programa,"
+            ps = conn.prepareStatement("INSERT INTO tbcurso(sigla, nome, datavigencia, programa,"
                     + "cargahoraria, valor, valorhorainst) VALUES(?,?,?,?,?,?,?)");
             ps.setString(1, curso.getSigla());
             ps.setString(2, curso.getNome());
@@ -48,7 +48,7 @@ public class DaoCurso {
         try {
             ps = conn.prepareStatement("UPDATE tbcurso set nome = ?, datavigencia = ?, programa = ?,"
                     + "cargahoraria = ?, valor = ?, valorhorainst = ?"
-                    + "where SiglaCurso = ?");
+                    + "where sigla = ?");
 
             ps.setString(1, curso.getNome());
             ps.setString(2, curso.getDataVigencia());

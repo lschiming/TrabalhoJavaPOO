@@ -27,8 +27,8 @@ public class DaoCurso {
     public void inserir(Curso curso) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("INSERT INTO tbcurso(SiglaCurso, NomeCurso, dataVigencia, programa,"
-                    + "CargaHor, Valor, ValHorInstr) VALUES(?,?,?,?,?,?,?)");
+            ps = conn.prepareStatement("INSERT INTO tbcurso(SiglaCurso, nome, datavigencia, programa,"
+                    + "cargahoraria, valor, valorhorainst) VALUES(?,?,?,?,?,?,?)");
             ps.setString(1, curso.getSigla());
             ps.setString(2, curso.getNome());
             ps.setString(3, curso.getDataVigencia());
@@ -46,8 +46,8 @@ public class DaoCurso {
     public void alterar(Curso curso) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("UPDATE tbcurso setNomeCurso = ?, dataVigencia = ?, programa = ?,"
-                    + "CargaHor = ?, Valor = ?, ValHorInstr = ?"
+            ps = conn.prepareStatement("UPDATE tbcurso set nome = ?, datavigencia = ?, programa = ?,"
+                    + "cargahoraria = ?, valor = ?, valorhorainst = ?"
                     + "where SiglaCurso = ?");
 
             ps.setString(1, curso.getNome());
@@ -69,10 +69,19 @@ public class DaoCurso {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("SELECT * from tbcurso where"
-                    + " SiglaCurso = ?");
+                    + " sigla = ?");
 
             ps.setString(1, sigla);
             ResultSet rs = ps.executeQuery();
+            
+            if(rs.next() == true){
+                cs = new Curso(sigla, rs.getString("nome"));
+                cs.setPrograma(String.valueOf(rs.getString("programa")));
+                cs.setDataVigencia(String.valueOf(rs.getString("datavigencia")));
+                cs.setCargaHoraria(Integer.valueOf(("cargahoraria")));
+                cs.setValor(Double.valueOf("valor"));
+                cs.setValorHoraInstrutor(Double.valueOf("valorhorainst"));
+            }
 
         } catch (SQLException ex) {
             System.out.println(ex.toString());
@@ -83,7 +92,7 @@ public class DaoCurso {
     public void excluir(Curso curso) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("DELETE FROM tbcurso where SiglaCurso = ?");
+            ps = conn.prepareStatement("DELETE FROM tbcurso where sigla = ?");
 
             ps.setString(1, curso.getSigla());
 

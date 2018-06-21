@@ -343,7 +343,7 @@ public class GuiAluno extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         conexao = new Conexao("poo", "trabalhopoo");
         conexao.setDriver("oracle.jdbc.driver.OracleDriver");
@@ -360,21 +360,7 @@ public class GuiAluno extends javax.swing.JFrame {
         String cpf = ftxtCPF.getText().replaceAll("[.-]", "");
         System.out.println(helper.isCpfValid(cpf));
         if (helper.isCpfValid(cpf)) {
-            txtNome.setEnabled(true);
-            ftxtDtNasc.setEnabled(true);
-            ftxtRG.setEnabled(true);
-            cbxSexo.setEnabled(true);
-            cbxEstCivil.setEnabled(true);
-            ftxtTelefone.setEnabled(true);
-            ftxtCelular.setEnabled(true);
-            txtEnd.setEnabled(true);
-            txtNum.setEnabled(true);
-            txtBairro.setEnabled(true);
-            txtMun.setEnabled(true);
-            cbxEstado.setEnabled(true);
-            ftxtCEP.setEnabled(true);
-            txtEmail.setEnabled(true);
-            cbxEscolaridade.setEnabled(true);
+            setCamposEnabled();
 
             Aluno aluno = daoAluno.consultar(cpf);
 
@@ -394,7 +380,7 @@ public class GuiAluno extends javax.swing.JFrame {
                 ftxtCEP.setText(aluno.getCep());
                 txtEmail.setText(aluno.getEmail());
                 cbxEscolaridade.setSelectedItem(aluno.getEscolaridade());
-               
+
                 btnAlterar.setEnabled(true);
                 btnExcluir.setEnabled(true);
             } else {
@@ -424,43 +410,18 @@ public class GuiAluno extends javax.swing.JFrame {
         aluno.setCep(ftxtCEP.getText().replaceAll("[-]", ""));
         aluno.setEmail(txtEmail.getText());
         aluno.setEscolaridade(cbxEscolaridade.getSelectedItem().toString());
-        
 
         daoAluno.inserir(aluno);
 
-        txtNome.setText("");
-        ftxtDtNasc.setText("");
-        ftxtRG.setText("");
-        ftxtTelefone.setText("");
-        ftxtCelular.setText("");
-        txtEnd.setText("");
-        txtNum.setText("");
-        txtBairro.setText("");
-        txtMun.setText("");
-        ftxtCEP.setText("");
-        txtEmail.setText("");
-        
-        
+        limpaCampos();
+
         btnConsultar.setEnabled(true);
         btnInserir.setEnabled(false);
         btnAlterar.setEnabled(false);
         ftxtCPF.requestFocus();
         ftxtCPF.setEnabled(true);
         txtNome.setEnabled(false);
-        ftxtDtNasc.setEnabled(false);
-        ftxtRG.setEnabled(false);
-        cbxSexo.setEnabled(false);
-        cbxEstCivil.setEnabled(false);
-        ftxtTelefone.setEnabled(false);
-        ftxtCelular.setEnabled(false);
-        txtEnd.setEnabled(false);
-        txtNum.setEnabled(false);
-        txtBairro.setEnabled(false);
-        txtMun.setEnabled(false);
-        ftxtCEP.setEnabled(false);
-        txtEmail.setEnabled(false);
-        cbxEscolaridade.setEnabled(false);
-        
+        setCamposEnabled();
 
         JOptionPane.showMessageDialog(null, "Aluno Inserido");
 
@@ -483,44 +444,41 @@ public class GuiAluno extends javax.swing.JFrame {
             aluno.setCep(ftxtCEP.getText().replaceAll("[-]", ""));
             aluno.setEmail(txtEmail.getText());
             aluno.setEscolaridade(cbxEscolaridade.getSelectedItem().toString());
-            
 
             daoAluno.alterar(aluno);
 
-            txtNome.setText("");
-            ftxtDtNasc.setText("");
-            ftxtRG.setText("");
-            ftxtTelefone.setText("");
-            ftxtCelular.setText("");
-            txtEnd.setText("");
-            txtNum.setText("");
-            txtBairro.setText("");
-            txtMun.setText("");
-            ftxtCEP.setText("");
-            txtEmail.setText("");
-            btnConsultar.setEnabled(true);
-            btnInserir.setEnabled(false);
-            btnAlterar.setEnabled(false);
-            ftxtCPF.requestFocus();
-            ftxtCPF.setEnabled(true);
-            txtNome.setEnabled(false);
-            ftxtDtNasc.setEnabled(false);
-            ftxtRG.setEnabled(false);
-            cbxSexo.setEnabled(false);
-            cbxEstCivil.setEnabled(false);
-            ftxtTelefone.setEnabled(false);
-            ftxtCelular.setEnabled(false);
-            txtEnd.setEnabled(false);
-            txtNum.setEnabled(false);
-            txtBairro.setEnabled(false);
-            txtMun.setEnabled(false);
-            ftxtCEP.setEnabled(false);
-            txtEmail.setEnabled(false);
-            cbxEscolaridade.setEnabled(false);
-            
-
             JOptionPane.showMessageDialog(null, "Atualizado com Sucesso");
         }
+        txtNome.setText("");
+        ftxtDtNasc.setText("");
+        ftxtRG.setText("");
+        ftxtTelefone.setText("");
+        ftxtCelular.setText("");
+        txtEnd.setText("");
+        txtNum.setText("");
+        txtBairro.setText("");
+        txtMun.setText("");
+        ftxtCEP.setText("");
+        txtEmail.setText("");
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        ftxtCPF.requestFocus();
+        ftxtCPF.setEnabled(true);
+        txtNome.setEnabled(false);
+        ftxtDtNasc.setEnabled(false);
+        ftxtRG.setEnabled(false);
+        cbxSexo.setEnabled(false);
+        cbxEstCivil.setEnabled(false);
+        ftxtTelefone.setEnabled(false);
+        ftxtCelular.setEnabled(false);
+        txtEnd.setEnabled(false);
+        txtNum.setEnabled(false);
+        txtBairro.setEnabled(false);
+        txtMun.setEnabled(false);
+        ftxtCEP.setEnabled(false);
+        txtEmail.setEnabled(false);
+        cbxEscolaridade.setEnabled(false);
         btnConsultar.setEnabled(true);
         btnInserir.setEnabled(false);
         btnAlterar.setEnabled(false);
@@ -531,11 +489,60 @@ public class GuiAluno extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0) {
             aluno = new Aluno(ftxtCPF.getText().replaceAll("[.-]", ""), txtNome.getText());
             daoAluno.excluir(aluno);
-
+            limpaCampos();
+            setCamposDisabled();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
-    
 
+    private void setCamposEnabled(){
+        txtNome.setEnabled(true);
+        ftxtDtNasc.setEnabled(true);
+        ftxtRG.setEnabled(true);
+        cbxSexo.setEnabled(true);
+        cbxEstCivil.setEnabled(true);
+        ftxtTelefone.setEnabled(true);
+        ftxtCelular.setEnabled(true);
+        txtEnd.setEnabled(true);
+        txtNum.setEnabled(true);
+        txtBairro.setEnabled(true);
+        txtMun.setEnabled(true);
+        cbxEstado.setEnabled(true);
+        ftxtCEP.setEnabled(true);
+        txtEmail.setEnabled(true);
+        cbxEscolaridade.setEnabled(true);
+    }
+    private void setCamposDisabled(){
+        txtNome.setEnabled(false);
+        ftxtDtNasc.setEnabled(false);
+        ftxtRG.setEnabled(false);
+        cbxSexo.setEnabled(false);
+        cbxEstCivil.setEnabled(false);
+        ftxtTelefone.setEnabled(false);
+        ftxtCelular.setEnabled(false);
+        txtEnd.setEnabled(false);
+        txtNum.setEnabled(false);
+        txtBairro.setEnabled(false);
+        txtMun.setEnabled(false);
+        cbxEstado.setEnabled(false);
+        ftxtCEP.setEnabled(false);
+        txtEmail.setEnabled(false);
+        cbxEscolaridade.setEnabled(false);
+    }
+    private void limpaCampos(){
+        txtNome.setText("");
+        ftxtDtNasc.setText("");
+        ftxtRG.setText("");
+        ftxtTelefone.setText("");
+        ftxtCelular.setText("");
+        txtEnd.setText("");
+        txtNum.setText("");
+        txtBairro.setText("");
+        txtMun.setText("");
+        ftxtCEP.setText("");
+        txtEmail.setText("");
+    }
+    private void populaCampos(){
+    }
     /**
      * @param args the command line arguments
      */

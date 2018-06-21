@@ -518,8 +518,6 @@ public class GuiInstrutor extends javax.swing.JFrame {
         txtNome.setText("");  
         ftxtDataNascimento.setText("");
         ftxtRG.setText("");
-        cbxSexo.setEnabled(true);
-        cbxEstadoCivil.setEnabled(true);
         ftxtTelRes.setText("");
         ftxtCelular.setText("");
         txtEndereco.setText("");
@@ -530,14 +528,30 @@ public class GuiInstrutor extends javax.swing.JFrame {
         txtEmail.setText("");
         txtFormacao.setText("");
         txtAreaAtuacao.setText("");
-                
-        btnInserir.setEnabled(false);
+        btnProcurar.setEnabled(true);
+        btnInserir.setEnabled(false);        
+        btnAlterar.setEnabled(false);
+        ftxtCPF.requestFocus();
         ftxtCPF.setEnabled(true);
         txtNome.setEnabled(false);
-        ftxtCPF.requestFocus();
+        ftxtDataNascimento.setEnabled(false);
+        ftxtRG.setEnabled(false);
+        cbxSexo.setEnabled(false);
+        cbxEstadoCivil.setEnabled(false);
+        ftxtTelRes.setEnabled(false);
+        ftxtCelular.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtNumero.setEnabled(false);
+        txtBairro.setEnabled(false);
+        txtMunicipio.setEnabled(false);
+        ftxtCEP.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtFormacao.setEnabled(false);
+        txtAreaAtuacao.setEnabled(false);
         
-        btnProcurar.setEnabled(true);
-        btnInserir.setEnabled(false);
+         JOptionPane.showMessageDialog(null, "Instrutor Inserido");
+        
+        
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void ftxtTelResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtTelResActionPerformed

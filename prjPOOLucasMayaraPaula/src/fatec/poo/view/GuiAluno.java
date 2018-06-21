@@ -1,6 +1,6 @@
 package fatec.poo.view;
 
-import fatec.poo.view.Helper;
+import fatec.poo.control.Helper;
 
 /**
  *

@@ -4,6 +4,7 @@ public class Matricula {
     private String data;
     private int qtdeFaltas;
     private double nota;
+    private Aluno aluno;
     private Turma turma;
 
     public Matricula(String data) {
@@ -17,17 +18,15 @@ public class Matricula {
     public void setNota(double nota) {
         this.nota = nota;
     }
-    
-    //emitirCarne como assim nao eh pra implementar???;
 
-    public Turma getTurma() {
-        return turma;
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 
     public void setTurma(Turma turma) {
         this.turma = turma;
     }
-
+    
     public String getData() {
         return data;
     }
@@ -39,5 +38,12 @@ public class Matricula {
     public double getNota() {
         return nota;
     }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
     
+    public Turma getTurma() {
+        return turma;
+    }
 }

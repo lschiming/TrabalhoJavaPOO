@@ -19,7 +19,6 @@ import java.sql.SQLException;
 public class DaoTurma {
     
     private Connection conn;
-    private Conexao conexao = new Conexao("poo","trabalhopoo");
     
     public DaoTurma(Connection conn) {
         this.conn = conn;
@@ -76,7 +75,6 @@ public class DaoTurma {
             
             if (rs.next()) {
                 turma = new Turma(rs.getString("siglaturma"),rs.getString("descricao"));
-//                turma.setCurso(curso);
                 turma.setDataInicio(rs.getString("datainicio"));
                 turma.setDataTermino(rs.getString("datatermino"));
                 turma.setPeriodo(rs.getString("periodo"));

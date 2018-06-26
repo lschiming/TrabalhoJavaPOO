@@ -56,6 +56,12 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
             }
         });
 
+        cbxCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCursoActionPerformed(evt);
+            }
+        });
+
         btnAlocar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/add.png"))); // NOI18N
         btnAlocar.setText("Alocar");
         btnAlocar.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +188,16 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
             cbxInstrutor.addItem(instrutores.get(i));
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void cbxCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCursoActionPerformed
+        cbxTurma.removeAllItems();
+        String sc = String.valueOf(cbxCurso.getSelectedItem());
+        turmas = new ArrayList<>();
+        turmas = daoTurma.listarTurmasCurso(turmas, sc);
+        for (int i = 0; i < turmas.size(); i++) {
+            cbxTurma.addItem(turmas.get(i));
+        }
+    }//GEN-LAST:event_cbxCursoActionPerformed
 
     /**
      * @param args the command line arguments

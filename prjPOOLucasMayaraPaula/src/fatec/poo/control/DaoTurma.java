@@ -106,7 +106,7 @@ public class DaoTurma {
     public ArrayList<String> listarTurmasCurso(ArrayList t, String sc) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("SELECT sigla FROM tbturma WHERE siglacurso = ? ORDER BY sigla");
+            ps = conn.prepareStatement("SELECT siglaturma FROM tbturma WHERE siglacurso = ? ORDER BY siglaturma");
             ps.setString(1, sc);
             ResultSet rs = ps.executeQuery();
 

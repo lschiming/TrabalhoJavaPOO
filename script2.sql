@@ -33,7 +33,7 @@ CREATE TABLE tbmatricula (
   datamatricula  VARCHAR2( 10) NOT NULL,
   qtdefaltas     NUMBER,
   nota           NUMBER,
-  CONSTRAINT pk_turma PRIMARY KEY (cpfaluno, siglacturma)
+  CONSTRAINT pk_matricula PRIMARY KEY (cpfaluno, siglacturma)
 );
 
 CREATE TABLE tbavista (
@@ -43,8 +43,8 @@ CREATE TABLE tbavista (
   valor          NUMBER        NOT NULL,
   agencia        NUMBER        NOT NULL,
   ncheque        NUMBER,
-  predata        VARCHAR2( 10) NOT NULL,
-  CONSTANT pk_tbavista PRIMARY KEY (cpfaluno, siglacturma, datamatricula)
+  predata        VARCHAR2( 10),
+  CONSTRAINT pk_avista PRIMARY KEY (cpfaluno, siglacturma, datamatricula)
 );
 
 CREATE TABLE tbaprazo (
@@ -52,8 +52,8 @@ CREATE TABLE tbaprazo (
   siglacturma      VARCHAR2(  5) NOT NULL,
   datamatricula    VARCHAR2( 10) NOT NULL,
   valor            NUMBER        NOT NULL,
-  predata          VARCHAR2( 10) NOT NULL,
+  dtvencimento     VARCHAR2( 10) NOT NULL,
   taxajuros        NUMBER        NOT NULL,
-  qtdemensalidade  ,
-  CONSTANT pk_tbavista PRIMARY KEY (cpfaluno, siglacturma, datamatricula)
+  qtdemensalidade  NUMBER        NOT NULL,
+  CONSTRAINT pk_aprazo PRIMARY KEY (cpfaluno, siglacturma, datamatricula)
 );

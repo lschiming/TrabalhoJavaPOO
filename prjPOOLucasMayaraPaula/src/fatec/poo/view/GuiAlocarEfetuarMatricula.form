@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="grbtPagamento">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Efetuar Matricula"/>
@@ -108,7 +112,7 @@
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -205,7 +209,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="rbtParcelado" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="lblQtdeMensalidade" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="txtQtdeMensalidade" min="-2" pref="62" max="-2" attributes="0"/>
@@ -220,7 +224,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="rbtAVista" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="lblAgencia" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="txtAgencia" min="-2" pref="67" max="-2" attributes="0"/>
@@ -244,40 +248,30 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="rbtAVista" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblnoCheque" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblDataPagto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jFormattedTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtNoCheque" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbtAVista" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="rbtParcelado" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblQtdeMensalidade" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTxJuros" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtQtdeMensalidade" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblDataVencto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jFormattedTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtTxJuros" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbtParcelado" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="rbtAVista">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&#xc0; Vista"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtParcelado">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Parcelado"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="lblAgencia">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ag&#xea;ncia"/>
@@ -328,6 +322,22 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rbtParcelado">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grbtPagamento"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Parcelado"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rbtAVista">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grbtPagamento"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xc0; Vista"/>
           </Properties>
         </Component>
       </SubComponents>

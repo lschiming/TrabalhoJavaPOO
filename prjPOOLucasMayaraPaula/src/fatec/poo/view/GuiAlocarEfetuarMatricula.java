@@ -33,6 +33,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grbtPagamento = new javax.swing.ButtonGroup();
         lblDataMatricula = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -44,8 +45,6 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        rbtAVista = new javax.swing.JRadioButton();
-        rbtParcelado = new javax.swing.JRadioButton();
         lblAgencia = new javax.swing.JLabel();
         lblQtdeMensalidade = new javax.swing.JLabel();
         lblnoCheque = new javax.swing.JLabel();
@@ -58,6 +57,8 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         txtQtdeMensalidade = new javax.swing.JTextField();
         txtTxJuros = new javax.swing.JTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        rbtParcelado = new javax.swing.JRadioButton();
+        rbtAVista = new javax.swing.JRadioButton();
         btnConsultar = new javax.swing.JButton();
         btnInserir = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
@@ -103,10 +104,6 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pagamento"));
 
-        rbtAVista.setText("À Vista");
-
-        rbtParcelado.setText("Parcelado");
-
         lblAgencia.setText("Agência");
 
         lblQtdeMensalidade.setText("Qtde. Mensalidades");
@@ -130,6 +127,12 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        grbtPagamento.add(rbtParcelado);
+        rbtParcelado.setText("Parcelado");
+
+        grbtPagamento.add(rbtAVista);
+        rbtAVista.setText("À Vista");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,23 +177,23 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtAVista)
                     .addComponent(lblAgencia)
                     .addComponent(lblnoCheque)
                     .addComponent(lblDataPagto)
                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNoCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtAVista))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtParcelado)
                     .addComponent(lblQtdeMensalidade)
                     .addComponent(lblTxJuros)
                     .addComponent(txtQtdeMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDataVencto)
                     .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTxJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(txtTxJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtParcelado))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/pesq.png"))); // NOI18N
@@ -290,7 +293,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
                     .addComponent(ftxtCPFAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -367,6 +370,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxTurma;
     private javax.swing.JFormattedTextField ftxtCPFAluno;
     private javax.swing.JFormattedTextField ftxtDataMatricula;
+    private javax.swing.ButtonGroup grbtPagamento;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
@@ -394,8 +398,8 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     private DaoCurso daoCurso = null;
     private DaoTurma daoTurma = null;
     private DaoAluno daoAluno = null;
-    private DaoAVista daoAVista = null;
-    private DaoAPrazo daoAPrazo = null;
+    //private DaoAVista daoAVista = null;
+    //private DaoAPrazo daoAPrazo = null;
     private Matricula matricula = null;
     private Conexao conexao = null;
 }

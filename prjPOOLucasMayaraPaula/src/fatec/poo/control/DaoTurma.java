@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -100,5 +101,23 @@ public class DaoTurma {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
+    }
+    
+    public ArrayList<String> listarTurmasCurso(ArrayList t, String sc) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("SELECT sigla FROM tbturma WHERE siglacurso = ? ORDER BY sigla");
+            ps.setString(1, sc);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                t.add(rs.getString(1));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+
+        return t;
     }
 }

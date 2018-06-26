@@ -176,7 +176,11 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
             cbxCurso.addItem(cursos.get(i));
         }
         
-        
+        instrutores = new ArrayList<>();
+        instrutores = daoInstrutor.listarInstrutores(instrutores);
+        for (int i = 0; i < instrutores.size(); i++) {
+            cbxInstrutor.addItem(instrutores.get(i));
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -236,4 +240,5 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
     Instrutor instrutor = null;
     ArrayList<String> cursos = null;
     ArrayList<String> turmas = null;
+    ArrayList<String> instrutores = null;
 }

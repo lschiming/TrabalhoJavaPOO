@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import fatec.poo.model.Instrutor;
+import java.util.ArrayList;
 
 /**
  *
@@ -135,5 +136,22 @@ public class DaoInstrutor {
             System.out.println(ex.toString());
         }
 
+    }
+    
+    public ArrayList<String> listarInstrutores(ArrayList i) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("SELECT nome FROM tbinstrutor ORDER BY nome");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                i.add(rs.getString(1));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+
+        return i;
     }
 }

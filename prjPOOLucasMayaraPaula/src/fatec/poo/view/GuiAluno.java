@@ -430,6 +430,7 @@ public class GuiAluno extends javax.swing.JFrame {
         ftxtCPF.setEnabled(true);
         txtNome.setEnabled(false);
         setCamposDisabled();
+        ftxtCPF.setText("");
 
         JOptionPane.showMessageDialog(null, "Aluno Inserido");
 
@@ -477,6 +478,7 @@ public class GuiAluno extends javax.swing.JFrame {
             setCamposDisabled();
             btnAlterar.setEnabled(false);
             btnExcluir.setEnabled(false);
+            btnConsultar.setEnabled(true);
             ftxtCPF.setEnabled(true);
             ftxtCPF.requestFocus();
             ftxtCPF.setText("");

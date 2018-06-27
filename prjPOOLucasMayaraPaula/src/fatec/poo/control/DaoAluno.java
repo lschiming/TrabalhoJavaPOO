@@ -125,7 +125,7 @@ public class DaoAluno {
     public void excluir(Aluno aluno) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("DELETE FROM TBINSTRUTOR WHERE CPF = ?");
+            ps = conn.prepareStatement("DELETE FROM TBALUNO WHERE CPF = ?");
 
             ps.setString(1, aluno.getCpf());
 

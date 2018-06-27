@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -95,4 +96,24 @@ public class DaoMatricula {
             System.out.println(ex.toString());
         }
     }
+    
+        public ArrayList<String> listarTurmasCurso(ArrayList turma, String sc) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("SELECT siglaturma FROM tbturma WHERE siglacurso = ? ORDER BY siglaturma");
+            ps.setString(1, sc);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                turma.add(rs.getString(1));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+
+        return turma;
+    }
+
+    
 }

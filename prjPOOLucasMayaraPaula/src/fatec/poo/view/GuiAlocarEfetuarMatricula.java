@@ -9,7 +9,17 @@ import fatec.poo.control.Conexao;
 import fatec.poo.control.DaoAluno;
 import fatec.poo.control.DaoCurso;
 import fatec.poo.control.DaoTurma;
+import fatec.poo.control.Helper;
+import fatec.poo.model.APrazo;
+import fatec.poo.model.AVista;
+import fatec.poo.model.Aluno;
+import fatec.poo.model.Curso;
 import fatec.poo.model.Matricula;
+import fatec.poo.model.Turma;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,12 +61,12 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         lblDataPagto = new javax.swing.JLabel();
         lblTxJuros = new javax.swing.JLabel();
         lblDataVencto = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        ftxtDataPagto = new javax.swing.JFormattedTextField();
         txtAgencia = new javax.swing.JTextField();
         txtNoCheque = new javax.swing.JTextField();
         txtQtdeMensalidade = new javax.swing.JTextField();
         txtTxJuros = new javax.swing.JTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        ftxtDataVencto = new javax.swing.JFormattedTextField();
         rbtParcelado = new javax.swing.JRadioButton();
         rbtAVista = new javax.swing.JRadioButton();
         btnConsultar = new javax.swing.JButton();
@@ -64,8 +74,8 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         Sair = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblValor = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Efetuar Matricula");
@@ -92,6 +102,18 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        cbxCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCursoActionPerformed(evt);
+            }
+        });
+
+        cbxTurma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTurmaActionPerformed(evt);
+            }
+        });
+
         try {
             ftxtCPFAluno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
@@ -117,13 +139,13 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         lblDataVencto.setText("Data 1o. Vencto.");
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            ftxtDataPagto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            ftxtDataVencto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -154,7 +176,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(lblDataVencto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ftxtDataVencto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(rbtAVista)
                         .addGap(18, 18, 18)
@@ -168,7 +190,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(lblDataPagto)
                         .addGap(18, 18, 18)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ftxtDataPagto, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -180,7 +202,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
                     .addComponent(lblAgencia)
                     .addComponent(lblnoCheque)
                     .addComponent(lblDataPagto)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftxtDataPagto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNoCheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtAVista))
@@ -190,7 +212,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
                     .addComponent(lblTxJuros)
                     .addComponent(txtQtdeMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDataVencto)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftxtDataVencto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTxJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtParcelado))
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -198,15 +220,35 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
 
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/pesq.png"))); // NOI18N
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/add.png"))); // NOI18N
         btnInserir.setText("Inserir");
+        btnInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserirActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Eraser.png"))); // NOI18N
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         Sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/exit.png"))); // NOI18N
         Sair.setText("Sair");
@@ -216,9 +258,9 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        lblValor.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jLabel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        lblNome.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,8 +301,8 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -282,7 +324,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cbxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -292,7 +334,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(ftxtCPFAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -313,16 +355,89 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     }//GEN-LAST:event_SairActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        conexao = new Conexao("poo","trabalhopoo");
+          conexao = new Conexao("poo", "trabalhopoo");
         conexao.setDriver("oracle.jdbc.driver.OracleDriver");
         conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
         daoCurso = new DaoCurso(conexao.conectar());
+        daoTurma = new DaoTurma(conexao.conectar());
+        //daoAVista = new DaoAVista(conexao.conectar());
+        //daoAPrazo = new DaoAPrazo(conexao.conectar());
+
+        cursos = new ArrayList<>();
+        cursos = daoCurso.listarSiglas(cursos);
+        for (int i = 0; i < cursos.size(); i++) {
+            cbxCurso.addItem(cursos.get(i));
+        }
+
+        cbxCurso.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                curso = daoCurso.consultar(cbxCurso.getSelectedItem().toString());
+                lblValor.setText(Double.toString(curso.getValor())); 
+            }
+        });
+        
+        ftxtCPFAluno.setEnabled(false);   
+        rbtAVista.setEnabled(false);
+        rbtParcelado.setEnabled(false);
+        txtAgencia.setEnabled(false);
+        txtNoCheque.setEnabled(false);
+        ftxtDataPagto.setEnabled(false);
+        txtTxJuros.setEnabled(false);
+        txtQtdeMensalidade.setEnabled(false);
+        ftxtDataPagto.setEnabled(false);
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         conexao.fecharConexao();
         dispose();
     }//GEN-LAST:event_formWindowClosing
+
+    private void cbxCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCursoActionPerformed
+        cbxTurma.removeAllItems();
+        String sc = String.valueOf(cbxCurso.getSelectedItem());
+        turmas = new ArrayList<>();
+        turmas = daoTurma.listarTurmasCurso(turmas, sc);
+        for (int i = 0; i < turmas.size(); i++) {
+            cbxTurma.addItem(turmas.get(i));
+        }
+    }//GEN-LAST:event_cbxCursoActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        String cpf = ftxtCPFAluno.getText().replaceAll("[.-]", "");
+        System.out.println(helper.isCpfValid(cpf));
+        if (helper.isCpfValid(cpf)) {
+            lblNome.setEnabled(true);
+            Aluno aluno = daoAluno.consultar(cpf);
+            if (aluno != null) {
+                lblNome.setText(aluno.getNome());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "CPF Invalido");
+            ftxtCPFAluno.setEnabled(true);
+            ftxtCPFAluno.requestFocus();
+            ftxtCPFAluno.setText("");
+
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInserirActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void cbxTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTurmaActionPerformed
+        ftxtCPFAluno.setEnabled(true);
+        rbtAVista.setEnabled(true);
+        rbtParcelado.setEnabled(true);
+    }//GEN-LAST:event_cbxTurmaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,23 +485,23 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxTurma;
     private javax.swing.JFormattedTextField ftxtCPFAluno;
     private javax.swing.JFormattedTextField ftxtDataMatricula;
+    private javax.swing.JFormattedTextField ftxtDataPagto;
+    private javax.swing.JFormattedTextField ftxtDataVencto;
     private javax.swing.ButtonGroup grbtPagamento;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAgencia;
     private javax.swing.JLabel lblDataMatricula;
     private javax.swing.JLabel lblDataPagto;
     private javax.swing.JLabel lblDataVencto;
+    private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblQtdeMensalidade;
     private javax.swing.JLabel lblTxJuros;
+    private javax.swing.JLabel lblValor;
     private javax.swing.JLabel lblnoCheque;
     private javax.swing.JRadioButton rbtAVista;
     private javax.swing.JRadioButton rbtParcelado;
@@ -400,6 +515,13 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     private DaoAluno daoAluno = null;
     //private DaoAVista daoAVista = null;
     //private DaoAPrazo daoAPrazo = null;
-    private Matricula matricula = null;
+    private Helper helper = new Helper();
+    private Curso curso = null;
+    private Turma turma = null;
+    private APrazo aPrazo = null;
+    private AVista aVista = null;
     private Conexao conexao = null;
+    ArrayList<String> cursos = null;
+    ArrayList<String> turmas = null;
+    ArrayList<String> alunos = null;
 }

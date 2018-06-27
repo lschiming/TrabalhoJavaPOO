@@ -48,7 +48,7 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
         cbxInstrutor = new javax.swing.JComboBox<>();
         txtSituacao = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alocar Instrutor");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -59,6 +59,12 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
         cbxCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxCursoActionPerformed(evt);
+            }
+        });
+
+        cbxTurma.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxTurmaItemStateChanged(evt);
             }
         });
 
@@ -95,7 +101,6 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
             }
         });
 
-        txtSituacao.setText("Liberada");
         txtSituacao.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,11 +187,11 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
             cbxCurso.addItem(cursos.get(i));
         }
         
-        instrutores = new ArrayList<>();
-        instrutores = daoInstrutor.listarInstrutores(instrutores);
-        for (int i = 0; i < instrutores.size(); i++) {
-            cbxInstrutor.addItem(instrutores.get(i));
-        }
+//        instrutores = new ArrayList<>();
+//        instrutores = daoInstrutor.listarInstrutores(instrutores);
+//        for (int i = 0; i < instrutores.size(); i++) {
+//            cbxInstrutor.addItem(instrutores.get(i));
+//        }
     }//GEN-LAST:event_formWindowOpened
 
     private void cbxCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCursoActionPerformed
@@ -198,6 +203,27 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
             cbxTurma.addItem(turmas.get(i));
         }
     }//GEN-LAST:event_cbxCursoActionPerformed
+
+    private void cbxTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTurmaItemStateChanged
+        cbxInstrutor.removeAllItems();
+        String sc = String.valueOf(cbxCurso.getSelectedItem());
+        String st = String.valueOf(cbxTurma.getSelectedItem());
+        curso = daoCurso.consultar(sc);
+        turma = daoTurma.consultar(st, curso);
+
+        if(turma.getInstrutor() == null) {
+            instrutores = new ArrayList<>();
+            instrutores = daoInstrutor.listarInstrutores(instrutores);
+            for (int i = 0; i < instrutores.size(); i++) {
+                cbxInstrutor.addItem(instrutores.get(i));
+            }
+        } else {
+            cbxInstrutor.addItem(String.valueOf(turma.getInstrutor()));
+            cbxInstrutor.setSelectedItem(String.valueOf(turma.getInstrutor()));
+
+            cbxInstrutor.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbxTurmaItemStateChanged
 
     /**
      * @param args the command line arguments

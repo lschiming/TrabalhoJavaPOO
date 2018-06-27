@@ -6,6 +6,7 @@
 package fatec.poo.control;
 
 import fatec.poo.model.Curso;
+import fatec.poo.model.Instrutor;
 import fatec.poo.model.Turma;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -119,5 +120,30 @@ public class DaoTurma {
         }
 
         return t;
+    }
+    
+    public void alocaInstrutor(Turma t, Instrutor i){
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("UPDATE tbturma SET cpfinstrutor = ? WHERE siglaturma = ?");
+            ps.setString(1, i.getCpf());
+            ps.setString(2, t.getSiglaTurma());
+            
+            ps.execute();
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+    }
+    
+    public void liberaInstrutor(Turma t){
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("UPDATE tbturma SET cpfinstrutor = NULL WHERE siglaturma = ?");
+            ps.setString(1, t.getSiglaTurma());
+            
+            ps.execute();
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
     }
 }

@@ -331,7 +331,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
                                 .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblRG)
-                                .addGap(10, 10, 10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ftxtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -438,8 +438,6 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        btnProcurar.getAccessibleContext().setAccessibleName("Consultar");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -490,7 +488,6 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 btnAlterar.setEnabled(true);
                 btnExcluir.setEnabled(true);
                 ftxtCPF.setEnabled(false);
-                //ftxtCPF.setText("");
                 setCamposEnabled();
                 txtNome.requestFocus();
             } else {
@@ -498,7 +495,6 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 btnProcurar.setEnabled(false);
                 txtNome.requestFocus();
                 ftxtCPF.setEnabled(false);
-                ftxtCPF.setText("");
                 setCamposEnabled();
             }
         } else {
@@ -544,6 +540,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         ftxtCPF.setEnabled(true);
         txtNome.setEnabled(false);
         setCamposDisabled();
+        ftxtCPF.setText("");
         
 
         JOptionPane.showMessageDialog(null, "Instrutor Inserido");
@@ -587,6 +584,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
         setCamposDisabled();
         ftxtCPF.setText("");
         btnExcluir.setEnabled(false);
+        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed

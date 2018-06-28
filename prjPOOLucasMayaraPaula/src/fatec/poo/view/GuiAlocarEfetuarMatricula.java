@@ -5,10 +5,13 @@
  */
 package fatec.poo.view;
 
+import fatec.poo.control.DaoAPrazo;
 import fatec.poo.control.Conexao;
 import fatec.poo.control.DaoAluno;
 import fatec.poo.control.DaoCurso;
 import fatec.poo.control.DaoTurma;
+import fatec.poo.control.DaoAVista;
+import fatec.poo.control.DaoAPrazo;
 import fatec.poo.control.Helper;
 import fatec.poo.model.APrazo;
 import fatec.poo.model.AVista;

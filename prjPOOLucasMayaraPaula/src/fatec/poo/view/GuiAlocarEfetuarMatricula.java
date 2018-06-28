@@ -355,7 +355,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     }//GEN-LAST:event_SairActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-          conexao = new Conexao("poo", "trabalhopoo");
+        conexao = new Conexao("poo", "trabalhopoo");
         conexao.setDriver("oracle.jdbc.driver.OracleDriver");
         conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
         daoCurso = new DaoCurso(conexao.conectar());
@@ -372,11 +372,11 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         cbxCurso.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 curso = daoCurso.consultar(cbxCurso.getSelectedItem().toString());
-                lblValor.setText(Double.toString(curso.getValor())); 
+                lblValor.setText(Double.toString(curso.getValor()));
             }
         });
-        
-        ftxtCPFAluno.setEnabled(false);   
+
+        ftxtCPFAluno.setEnabled(false);
         rbtAVista.setEnabled(false);
         rbtParcelado.setEnabled(false);
         txtAgencia.setEnabled(false);
@@ -385,7 +385,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         txtTxJuros.setEnabled(false);
         txtQtdeMensalidade.setEnabled(false);
         ftxtDataVencto.setEnabled(false);
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -417,49 +417,120 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
             ftxtCPFAluno.setEnabled(true);
             ftxtCPFAluno.requestFocus();
             ftxtCPFAluno.setText("");
-            
+
         }
-        
+
         btnConsultar.setEnabled(false);
         btnInserir.setEnabled(true);
         btnExcluir.setEnabled(false);
         btnAlterar.setEnabled(false);
-        
+
 
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        matricula = null;
-        
+        matricula = new Matricula(ftxtDataMatricula.getText());
+        aVista = new AVista();
+        aPrazo = new APrazo();
+
         boolean teste = rbtAVista.isSelected();
         if (teste == true) {
+            aVista.setAgencia(Integer.valueOf(txtAgencia.getText()));
+            aVista.setnCheque(Integer.valueOf(txtNoCheque.getText()));
+            aVista.setPreData(ftxtDataPagto.getText());
+
+            daoAVista.inserir(aVista);
+
+            txtAgencia.setText("");
+            txtNoCheque.setText("");
+            ftxtDataPagto.setText("");
+
+            btnInserir.setEnabled(false);
             txtAgencia.setEnabled(true);
             txtNoCheque.setEnabled(true);
             ftxtDataPagto.setEnabled(true);
-            
+
             txtQtdeMensalidade.setEnabled(false);
             txtTxJuros.setEnabled(false);
             ftxtDataVencto.setEnabled(false);
+            ftxtDataMatricula.requestFocus();
+
+            btnConsultar.setEnabled(true);
+            btnInserir.setEnabled(false);
+
         } else {
+
+            aPrazo.setQtdeMensalidade(Integer.valueOf(txtQtdeMensalidade.getText()));
+            aPrazo.setTaxaJuros(Integer.valueOf(txtTxJuros.getText()));
+            aPrazo.setDataVencimento(ftxtDataVencto.getText());
+
+            daoAPrazo.inserir(aPrazo);
+
+            txtQtdeMensalidade.setText("");
+            txtTxJuros.setText("");
+            ftxtDataVencto.setText("");
+
+            btnInserir.setEnabled(false);
             txtQtdeMensalidade.setEnabled(true);
             txtTxJuros.setEnabled(true);
             ftxtDataVencto.setEnabled(true);
-            
+
             txtAgencia.setEnabled(false);
             txtNoCheque.setEnabled(false);
             ftxtDataPagto.setEnabled(false);
+            ftxtDataMatricula.requestFocus();
+
+            btnConsultar.setEnabled(true);
+            btnInserir.setEnabled(false);
         }
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração") == 0) {
+            matricula = new Matricula(ftxtDataMatricula.getText());
+
+            if (rbtAVista.isSelected()) {
+                aVista.setAgencia(Integer.parseInt(txtAgencia.getText()));
+                aVista.setnCheque(Integer.parseInt(txtNoCheque.getText()));
+                aVista.setPreData(ftxtDataPagto.getText());
+
+                daoAVista.alterar(aVista);
+
+                txtAgencia.setText("");
+                txtNoCheque.setText("");
+                ftxtDataPagto.setText("");
+                rbtAVista.requestFocus();
+
+                rbtAVista.setEnabled(true);
+                txtAgencia.setEnabled(false);
+                txtNoCheque.setEnabled(false);
+                ftxtDataPagto.setEnabled(false);
+
+            } else {
+                aPrazo.setQtdeMensalidade(Integer.parseInt(txtQtdeMensalidade.getText()));
+                aPrazo.setTaxaJuros(Double.parseDouble(txtTxJuros.getText()));
+                aPrazo.setDataVencimento(ftxtDataVencto.getText());
+
+                daoAPrazo.alterar(aPrazo);
+
+                txtQtdeMensalidade.setText("");
+                txtTxJuros.setText("");
+                ftxtDataVencto.setText("");
+                rbtParcelado.requestFocus();
+
+                rbtParcelado.setEnabled(true);
+                txtQtdeMensalidade.setEnabled(false);
+                txtTxJuros.setEnabled(false);
+                ftxtDataVencto.setEnabled(false);
+            }
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-                if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0) {
+        if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0) {
             daoAVista.excluir(matricula);
             daoAPrazo.excluir(matricula);
-            
+
             cbxCurso.setSelectedIndex(0);
             cbxTurma.setSelectedIndex(0);
             txtAgencia.setText("");
@@ -470,22 +541,21 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
             ftxtDataMatricula.setText("");
             ftxtDataPagto.setText("");
             ftxtDataVencto.setText("");
-            
+
             cbxCurso.setEnabled(true);
             cbxTurma.setEnabled(true);
             ftxtDataMatricula.setEnabled(true);
             ftxtCPFAluno.setEnabled(false);
             ftxtDataPagto.setEnabled(false);
             ftxtDataVencto.setEnabled(false);
-            rbtAVista.setEnabled(false);
-            rbtParcelado.setEnabled(false);
+            rbtnAVista.setEnabled(false);
+            rbtnAPrazo.setEnabled(false);
             txtAgencia.setEnabled(false);
             txtNoCheque.setEnabled(false);
             txtQtdeMensalidade.setEnabled(false);
             txtTxJuros.setEnabled(false);
             ftxtDataMatricula.requestFocus();
-            
-            
+
             btnConsultar.setEnabled(true);
             btnInserir.setEnabled(false);
             btnAlterar.setEnabled(false);

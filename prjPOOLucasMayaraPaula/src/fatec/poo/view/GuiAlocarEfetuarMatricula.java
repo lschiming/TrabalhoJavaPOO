@@ -365,6 +365,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         daoTurma = new DaoTurma(conexao.conectar());
         daoAVista = new DaoAVista(conexao.conectar());
         daoAPrazo = new DaoAPrazo(conexao.conectar());
+        daoAluno = new DaoAluno(conexao.conectar());
 
         cursos = new ArrayList<>();
         cursos = daoCurso.listarSiglas(cursos);
@@ -408,7 +409,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         String cpf = ftxtCPFAluno.getText().replaceAll("[.-]", "");
-        System.out.println(helper.isCpfValid(cpf));
+        
         if (helper.isCpfValid(cpf)) {
             lblNome.setEnabled(true);
             Aluno aluno = daoAluno.consultar(cpf);
@@ -433,11 +434,10 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
         matricula = new Matricula(ftxtDataMatricula.getText());
-        aVista = new AVista();
-        aPrazo = new APrazo();
+        AVista aVista = new AVista(matricula);
+        APrazo aPrazo = new APrazo(matricula);
 
-        boolean teste = rbtAVista.isSelected();
-        if (teste == true) {
+        if (rbtAVista.isSelected()) {
             aVista.setAgencia(Integer.valueOf(txtAgencia.getText()));
             aVista.setnCheque(Integer.valueOf(txtNoCheque.getText()));
             aVista.setPreData(ftxtDataPagto.getText());
@@ -530,9 +530,12 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        matricula = new Matricula(ftxtDataMatricula.getText());
+        
         if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0) {
-            daoAVista.excluir(matricula);
-            daoAPrazo.excluir(matricula);
+            
+            daoAVista.excluir(new AVista(matricula));
+            daoAPrazo.excluir(new APrazo(matricula));
 
             cbxCurso.setSelectedIndex(0);
             cbxTurma.setSelectedIndex(0);

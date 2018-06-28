@@ -63,22 +63,26 @@ public class DaoAVista {
 
     }
 
-    public AVista consultar(String cpfaluno, Matricula m) {
+    public AVista consultar(Matricula m) {
         AVista avista = null;
 
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("SELECT * FROM TBAVISTA WHERE CPFALUNO = ?");
 
-            ps.setString(1, cpfaluno);
+            ps.setString(1, m.getAluno().getCpf());
             ResultSet rs = ps.executeQuery();
 
             if (rs.next() == true) {
                 avista = new AVista(m);
 
-                //avista.setDataNasc(rs.getString("datanasc"));
-                //avista.setRg(rs.getString("rg"));
-                //avista.setSexo(rs.getString("sexo"));
+                avista.setValor(rs.getDouble("VALOR"));
+                avista.setAgencia(rs.getInt("AGENCIA"));
+                avista.setPreData(rs.getString("PREDATA"));
+                avista.setnCheque(rs.getInt("NCHEQUE"));
+                //avista.setValor(rs.getString("DATAMATRICULA"));
+
+      
 
             }
         } catch (SQLException ex) {
@@ -88,6 +92,7 @@ public class DaoAVista {
 
     }
 
+    
     public void excluir(AVista avista) {
         PreparedStatement ps = null;
         try {

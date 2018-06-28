@@ -360,8 +360,8 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
         daoCurso = new DaoCurso(conexao.conectar());
         daoTurma = new DaoTurma(conexao.conectar());
-        //daoAVista = new DaoAVista(conexao.conectar());
-        //daoAPrazo = new DaoAPrazo(conexao.conectar());
+        daoAVista = new DaoAVista(conexao.conectar());
+        daoAPrazo = new DaoAPrazo(conexao.conectar());
 
         cursos = new ArrayList<>();
         cursos = daoCurso.listarSiglas(cursos);
@@ -384,7 +384,7 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
         ftxtDataPagto.setEnabled(false);
         txtTxJuros.setEnabled(false);
         txtQtdeMensalidade.setEnabled(false);
-        ftxtDataPagto.setEnabled(false);
+        ftxtDataVencto.setEnabled(false);
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -417,12 +417,38 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
             ftxtCPFAluno.setEnabled(true);
             ftxtCPFAluno.requestFocus();
             ftxtCPFAluno.setText("");
-
+            
         }
+        
+        btnConsultar.setEnabled(false);
+        btnInserir.setEnabled(true);
+        btnExcluir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        
+
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        // TODO add your handling code here:
+        matricula = null;
+        
+        boolean teste = rbtAVista.isSelected();
+        if (teste == true) {
+            txtAgencia.setEnabled(true);
+            txtNoCheque.setEnabled(true);
+            ftxtDataPagto.setEnabled(true);
+            
+            txtQtdeMensalidade.setEnabled(false);
+            txtTxJuros.setEnabled(false);
+            ftxtDataVencto.setEnabled(false);
+        } else {
+            txtQtdeMensalidade.setEnabled(true);
+            txtTxJuros.setEnabled(true);
+            ftxtDataVencto.setEnabled(true);
+            
+            txtAgencia.setEnabled(false);
+            txtNoCheque.setEnabled(false);
+            ftxtDataPagto.setEnabled(false);
+        }
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -430,7 +456,41 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+                if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0) {
+            daoAVista.excluir(matricula);
+            daoAPrazo.excluir(matricula);
+            
+            cbxCurso.setSelectedIndex(0);
+            cbxTurma.setSelectedIndex(0);
+            txtAgencia.setText("");
+            txtNoCheque.setText("");
+            txtQtdeMensalidade.setText("");
+            txtTxJuros.setText("");
+            ftxtCPFAluno.setText("");
+            ftxtDataMatricula.setText("");
+            ftxtDataPagto.setText("");
+            ftxtDataVencto.setText("");
+            
+            cbxCurso.setEnabled(true);
+            cbxTurma.setEnabled(true);
+            ftxtDataMatricula.setEnabled(true);
+            ftxtCPFAluno.setEnabled(false);
+            ftxtDataPagto.setEnabled(false);
+            ftxtDataVencto.setEnabled(false);
+            rbtAVista.setEnabled(false);
+            rbtParcelado.setEnabled(false);
+            txtAgencia.setEnabled(false);
+            txtNoCheque.setEnabled(false);
+            txtQtdeMensalidade.setEnabled(false);
+            txtTxJuros.setEnabled(false);
+            ftxtDataMatricula.requestFocus();
+            
+            
+            btnConsultar.setEnabled(true);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void cbxTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTurmaActionPerformed
@@ -513,11 +573,12 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
     private DaoCurso daoCurso = null;
     private DaoTurma daoTurma = null;
     private DaoAluno daoAluno = null;
-    //private DaoAVista daoAVista = null;
-    //private DaoAPrazo daoAPrazo = null;
+    private DaoAVista daoAVista = null;
+    private DaoAPrazo daoAPrazo = null;
     private Helper helper = new Helper();
     private Curso curso = null;
     private Turma turma = null;
+    private Matricula matricula = null;
     private APrazo aPrazo = null;
     private AVista aVista = null;
     private Conexao conexao = null;

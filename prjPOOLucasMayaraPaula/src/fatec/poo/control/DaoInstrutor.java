@@ -120,7 +120,7 @@ public class DaoInstrutor {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        return (instrutor);
+        return instrutor;
 
     }
 
@@ -153,5 +153,42 @@ public class DaoInstrutor {
         }
 
         return i;
+    }
+    
+        public Instrutor consultarNome(String nome) {
+        Instrutor instrutor = null;
+
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("SELECT * from TBINSTRUTOR where "
+                    + "nome = ?");
+
+            ps.setString(1, nome);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next() == true) {
+                instrutor = new Instrutor(rs.getString("cpf"), nome);
+
+                instrutor.setDataNasc(rs.getString("datanasc"));
+                instrutor.setRg(rs.getString("rg"));
+                instrutor.setSexo(rs.getString("sexo"));
+                instrutor.setEstadoCivil(rs.getString("estadocivil"));
+                instrutor.setTelefone(rs.getString("telefone"));
+                instrutor.setCelular(rs.getString("celular"));
+                instrutor.setEndereco(rs.getString("endereco"));
+                instrutor.setNumero(rs.getInt("numero"));
+                instrutor.setBairro(rs.getString("bairro"));
+                instrutor.setCidade(rs.getString("cidade"));
+                instrutor.setEstado(rs.getString("estado"));
+                instrutor.setCep(rs.getString("cep"));
+                instrutor.setEmail(rs.getString("email"));
+                instrutor.setFormacao(rs.getString("formacao"));
+                instrutor.setAreaAtuacao(rs.getString("areaatuacao"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return instrutor;
+
     }
 }

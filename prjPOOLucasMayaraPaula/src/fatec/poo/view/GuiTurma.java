@@ -297,7 +297,6 @@ public class GuiTurma extends javax.swing.JFrame {
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
         String sc = String.valueOf(cbxCurso.getSelectedItem());
-        System.out.println(sc);
         turma = new Turma(txtSiglaTurma.getText(),txtNome.getText()); //txtNome = Descricao
         turma.setDataInicio(ftxtDataInicio.getText().replace("/", ""));
         turma.setDataTermino(ftxtDataTermino.getText().replace("/", ""));

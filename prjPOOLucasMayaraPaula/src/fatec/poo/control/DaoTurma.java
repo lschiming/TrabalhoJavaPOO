@@ -135,15 +135,35 @@ public class DaoTurma {
         }
     }
     
-    public void liberaInstrutor(Turma t){
+    public void liberaInstrutor(String st){
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("UPDATE tbturma SET cpfinstrutor = NULL WHERE siglaturma = ?");
-            ps.setString(1, t.getSiglaTurma());
+            ps.setString(1, st);
             
             ps.execute();
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
+    }
+    
+    public String consultaInstrutor(String st){
+        Turma turma = null;
+        String cpf = null;
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("SELECT cpfinstrutor FROM tbturma WHERE siglaturma = ?");
+            ps.setString(1, st);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                cpf = rs.getString("cpfinstrutor");
+            }
+        
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        
+        return cpf;
     }
 }

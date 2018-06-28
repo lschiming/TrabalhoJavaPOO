@@ -12,7 +12,12 @@ import fatec.poo.control.DaoTurma;
 import fatec.poo.model.Curso;
 import fatec.poo.model.Instrutor;
 import fatec.poo.model.Turma;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,12 +64,6 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
         cbxCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxCursoActionPerformed(evt);
-            }
-        });
-
-        cbxTurma.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbxTurmaItemStateChanged(evt);
             }
         });
 
@@ -162,11 +161,34 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlocarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlocarActionPerformed
+        curso = daoCurso.consultar(cbxCurso.getSelectedItem().toString());
+        turma = daoTurma.consultar(cbxTurma.getSelectedItem().toString(), curso);
+        instrutor = daoInstrutor.consultarNome(cbxInstrutor.getSelectedItem().toString());
+        daoTurma.alocaInstrutor(turma, instrutor);
         
+        btnAlocar.setEnabled(false);
+        btnLiberar.setEnabled(true);
+        cbxCurso.setEnabled(false);
+        cbxTurma.setEnabled(false);
+        cbxInstrutor.setEnabled(false);
+        txtSituacao.setText("Alocado.");
     }//GEN-LAST:event_btnAlocarActionPerformed
 
     private void btnLiberarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Confirma Liberação") == 0) {
+            daoTurma.liberaInstrutor(cbxTurma.getSelectedItem().toString());
+        }
         
+        btnAlocar.setEnabled(true);
+        btnLiberar.setEnabled(false);
+        cbxCurso.setEnabled(true);
+        cbxTurma.setEnabled(true);
+        cbxInstrutor.setEnabled(true);
+        txtSituacao.setText("Liberado.");
+        
+        cbxCurso.setSelectedIndex(0);
+        cbxTurma.setSelectedIndex(0);
+        cbxInstrutor.setSelectedIndex(0);
     }//GEN-LAST:event_btnLiberarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -187,43 +209,51 @@ public class GuiAlocarInstrutor extends javax.swing.JFrame {
             cbxCurso.addItem(cursos.get(i));
         }
         
-//        instrutores = new ArrayList<>();
-//        instrutores = daoInstrutor.listarInstrutores(instrutores);
-//        for (int i = 0; i < instrutores.size(); i++) {
-//            cbxInstrutor.addItem(instrutores.get(i));
-//        }
+        instrutores = new ArrayList<>();
+        instrutores = daoInstrutor.listarInstrutores(instrutores);
+        for (int i = 0; i < instrutores.size(); i++) {
+            cbxInstrutor.addItem(instrutores.get(i));
+        }
+        
+        cbxTurma.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent ie) {
+                if(ie.getStateChange() == ItemEvent.SELECTED){
+                    curso = daoCurso.consultar(cbxCurso.getSelectedItem().toString());
+                    turma = daoTurma.consultar(cbxTurma.getSelectedItem().toString(), curso);
+                    String cpfi = daoTurma.consultaInstrutor(cbxTurma.getSelectedItem().toString());
+                    if(cpfi != null) {
+                        cbxInstrutor.removeAllItems();
+                        instrutor = daoInstrutor.consultar(cpfi);
+                        cbxInstrutor.addItem(instrutor.getNome());
+                        
+                        txtSituacao.setText("Alocado.");
+                        
+                        btnLiberar.setEnabled(true);
+                        btnAlocar.setEnabled(false);
+                    } else {
+                        cbxInstrutor.removeAllItems();
+                        for (int i = 0; i < instrutores.size(); i++) {
+                            cbxInstrutor.addItem(instrutores.get(i));
+                        }
+                        txtSituacao.setText("Liberado.");
+                        
+                        btnLiberar.setEnabled(false);
+                        btnAlocar.setEnabled(true);
+                    }                    
+                }
+            }
+        });
     }//GEN-LAST:event_formWindowOpened
 
     private void cbxCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCursoActionPerformed
         cbxTurma.removeAllItems();
-        String sc = String.valueOf(cbxCurso.getSelectedItem());
+        String sc = cbxCurso.getSelectedItem().toString();
         turmas = new ArrayList<>();
         turmas = daoTurma.listarTurmasCurso(turmas, sc);
         for (int i = 0; i < turmas.size(); i++) {
             cbxTurma.addItem(turmas.get(i));
         }
     }//GEN-LAST:event_cbxCursoActionPerformed
-
-    private void cbxTurmaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTurmaItemStateChanged
-        cbxInstrutor.removeAllItems();
-        String sc = String.valueOf(cbxCurso.getSelectedItem());
-        String st = String.valueOf(cbxTurma.getSelectedItem());
-        curso = daoCurso.consultar(sc);
-        turma = daoTurma.consultar(st, curso);
-
-        if(turma.getInstrutor() == null) {
-            instrutores = new ArrayList<>();
-            instrutores = daoInstrutor.listarInstrutores(instrutores);
-            for (int i = 0; i < instrutores.size(); i++) {
-                cbxInstrutor.addItem(instrutores.get(i));
-            }
-        } else {
-            cbxInstrutor.addItem(String.valueOf(turma.getInstrutor()));
-            cbxInstrutor.setSelectedItem(String.valueOf(turma.getInstrutor()));
-
-            cbxInstrutor.setEnabled(false);
-        }
-    }//GEN-LAST:event_cbxTurmaItemStateChanged
 
     /**
      * @param args the command line arguments

@@ -551,8 +551,8 @@ public class GuiAlocarEfetuarMatricula extends javax.swing.JFrame {
             ftxtCPFAluno.setEnabled(false);
             ftxtDataPagto.setEnabled(false);
             ftxtDataVencto.setEnabled(false);
-            rbtnAVista.setEnabled(false);
-            rbtnAPrazo.setEnabled(false);
+            rbtAVista.setEnabled(false);
+            rbtParcelado.setEnabled(false);
             txtAgencia.setEnabled(false);
             txtNoCheque.setEnabled(false);
             txtQtdeMensalidade.setEnabled(false);
